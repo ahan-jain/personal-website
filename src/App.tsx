@@ -263,7 +263,7 @@ function App() {
           {/* Navigable scroll arrow - points to about section */}
           <a 
             href="#about" 
-            className="scroll-arrow inline-block mt-8 text-white/60 hover:text-[#00FF7F] hover:scale-110 transition-all duration-300 cursor-pointer"
+            className="scroll-arrow inline-block mt-8 text-white/60 hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer"
             aria-label="Scroll to About section"
           >
             <ChevronDown className="w-10 h-10 mx-auto animate-bounce" />
