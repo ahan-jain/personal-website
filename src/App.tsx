@@ -230,8 +230,8 @@ function App() {
                   I thrive on tackling complex challenges and bringing bold ideas to life.
                 </p>
                 <p>
-                  As a backend developer, I architect scalable APIs and robust systems that power seamless experiences. 
-                  Off the clock, you'll find me jamming with my friends, diving into my favorite games, or leading teams to innovate.
+                As a backend developer, I architect scalable APIs, build real-time data pipelines, and leverage machine-learning insights to drive smarter systems. 
+                Off the clock, you’ll find me jamming with friends, diving into my favorite games, or exploring new backend tools.
                 </p>
                 <p>
                   I'm passionate about turning complex problems into elegant solutions and sharing my work with the developer community.
