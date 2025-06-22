@@ -247,7 +247,7 @@ function App() {
         {/* Hero Content - No backdrop box */}
         <div className="text-center z-10 px-8 relative">
           <h1 className="hero-headline text-6xl md:text-7xl lg:text-8xl font-bold mb-8 fade-in-up">
-            Hi! I'm Ahan.
+             Hi! I'm Ahan.
           </h1>
           <div className="hero-bio text-xl md:text-2xl font-light tracking-wide mb-16 fade-in-up max-w-2xl mx-auto min-h-[3rem] flex items-center justify-center text-center" style={{letterSpacing: '0.2px'}}>
             <div className="font-mono flex items-center">
@@ -279,7 +279,7 @@ function App() {
               <img 
                 src="/FullSizeRender.jpg" 
                 alt="Ahan Jain Portrait" 
-                className="w-full h-[600px] object-cover rounded-lg hover-zoom"
+                className="w-full h-[400px] md:h-[600px] object-cover rounded-lg hover-zoom"
               />
             </div>
             <div className="fade-in-up">
