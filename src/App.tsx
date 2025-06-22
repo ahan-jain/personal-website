@@ -227,7 +227,7 @@ function App() {
               <div className="space-y-6 text-lg font-light leading-relaxed">
                 <p>
                   Junior CS student at Northeastern concentrating in AI, driven to build software that makes a real difference. 
-                  I thrive on tackling complex challenges and bringing bold ideas to life.
+                  I thrive on tackling complex challenges and bringing creative ideas to life.
                 </p>
                 <p>
                 As a backend developer, I architect scalable APIs, build real-time data pipelines, and leverage machine-learning insights to drive smarter systems. 
