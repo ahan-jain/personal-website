@@ -442,7 +442,7 @@ function App() {
               href="https://github.com/ahan-jain"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 bg-[#00FF7F] hover:bg-[#00D16B] text-black px-8 py-3 rounded-lg font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              className="inline-flex items-center space-x-2 bg-white hover:bg-[#015FFC] text-black hover:text-white px-8 py-3 rounded-lg font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg"
             >
               <span>View All Projects</span>
             </a>
