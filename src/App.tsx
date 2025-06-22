@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ChevronDown, ExternalLink, Mail, Linkedin, Github, FileText } from 'lucide-react';
 import Particles from './components/Particles';
 
@@ -8,6 +8,14 @@ function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [showCursor, setShowCursor] = useState(true);
+  
+  // Refs for fixed time-interval typewriter
+  const animationRef = useRef();
+  const lastUpdateTimeRef = useRef(0);
+  const accumulatedTimeRef = useRef(0);
+  const isAnimatingRef = useRef(false);
+  const pauseStartRef = useRef(0);
+  const targetTextRef = useRef('');
 
   const typingPhrases = [
     "Computer Science @ Northeastern University",
@@ -50,38 +58,92 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
-  // Enhanced typing animation effect with smoother transitions
+  // Fixed time-interval typewriter with 120fps updates
   useEffect(() => {
-    const currentPhrase = typingPhrases[currentIndex];
-    
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        // Typing - smoother speed variation
-        if (currentText.length < currentPhrase.length) {
-          setCurrentText(currentPhrase.slice(0, currentText.length + 1));
-        } else {
-          // Pause before deleting
-          setTimeout(() => setIsDeleting(true), 2500);
-        }
-      } else {
-        // Deleting - faster and smoother
-        if (currentText.length > 0) {
-          setCurrentText(currentText.slice(0, -1));
-        } else {
-          setIsDeleting(false);
-          setCurrentIndex((prev) => (prev + 1) % typingPhrases.length);
-        }
-      }
-    }, isDeleting ? 50 : (Math.random() * 50 + 80)); // More natural typing rhythm
+    const CHAR_INTERVAL_TYPING = 80; // ms per character when typing
+    const CHAR_INTERVAL_DELETING = 50; // ms per character when deleting
+    const PAUSE_DURATION = 2000; // ms to pause before deleting
+    const TARGET_FPS = 120; // 120fps for smooth updates
+    const FRAME_INTERVAL = 1000 / TARGET_FPS; // ~8.33ms per frame
 
-    return () => clearTimeout(timeout);
-  }, [currentText, isDeleting, currentIndex, typingPhrases]);
+    const animate = (timestamp) => {
+      if (!lastUpdateTimeRef.current) {
+        lastUpdateTimeRef.current = timestamp;
+      }
+
+      const deltaTime = timestamp - lastUpdateTimeRef.current;
+      
+      // Only process if enough time has passed for our target FPS
+      if (deltaTime >= FRAME_INTERVAL) {
+        const targetPhrase = typingPhrases[currentIndex];
+        
+        // Initialize animation state
+        if (!isAnimatingRef.current) {
+          targetTextRef.current = isDeleting ? '' : targetPhrase;
+          isAnimatingRef.current = true;
+          pauseStartRef.current = 0;
+          accumulatedTimeRef.current = 0;
+        }
+
+        // Handle pause before deleting
+        if (!isDeleting && currentText === targetPhrase && !pauseStartRef.current) {
+          pauseStartRef.current = timestamp;
+        }
+
+        if (pauseStartRef.current && timestamp - pauseStartRef.current >= PAUSE_DURATION) {
+          setIsDeleting(true);
+          isAnimatingRef.current = false;
+          pauseStartRef.current = 0;
+        } else if (!pauseStartRef.current) {
+          // Accumulate time for character intervals
+          accumulatedTimeRef.current += deltaTime;
+          
+          const charInterval = isDeleting ? CHAR_INTERVAL_DELETING : CHAR_INTERVAL_TYPING;
+          
+          // Only emit one character per interval, regardless of frame drops
+          if (accumulatedTimeRef.current >= charInterval) {
+            const intervalsToProcess = Math.floor(accumulatedTimeRef.current / charInterval);
+            
+            // Process exactly one character interval
+            if (isDeleting) {
+              if (currentText.length > 0) {
+                setCurrentText(prev => prev.slice(0, -1));
+              } else {
+                setIsDeleting(false);
+                setCurrentIndex((prev) => (prev + 1) % typingPhrases.length);
+                isAnimatingRef.current = false;
+              }
+            } else {
+              if (currentText.length < targetPhrase.length) {
+                setCurrentText(targetPhrase.slice(0, currentText.length + 1));
+              }
+            }
+            
+            // Subtract only one interval, carry over leftover time
+            accumulatedTimeRef.current -= charInterval;
+          }
+        }
+
+        lastUpdateTimeRef.current = timestamp;
+      }
+
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [currentIndex, isDeleting, currentText, typingPhrases]);
 
   // Terminal cursor blinking effect
   useEffect(() => {
     const cursorInterval = setInterval(() => {
       setShowCursor(prev => !prev);
-    }, 530); // Slightly slower blink for terminal feel
+    }, 530);
 
     return () => clearInterval(cursorInterval);
   }, []);
@@ -188,16 +250,14 @@ function App() {
             Ahan Jain
           </h1>
           <div className="hero-bio text-xl md:text-2xl font-light tracking-wide mb-16 fade-in-up max-w-2xl mx-auto min-h-[3rem] flex items-center justify-center text-center" style={{letterSpacing: '0.2px'}}>
-            <span className="font-mono">
-              {currentText}
+            <div className="font-mono flex items-center">
+              <span className="inline-block min-h-[1.5em] flex items-center">
+                {currentText}
+              </span>
               <span 
                 className={`inline-block w-3 h-7 bg-[#00FF7F] ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-150`}
-                style={{
-                  clipPath: 'polygon(0 0, 100% 0, 85% 100%, 0% 100%)',
-                  transform: 'skew(-15deg)'
-                }}
               ></span>
-            </span>
+            </div>
           </div>
           
           {/* Navigable scroll arrow - points to about section */}
@@ -231,7 +291,7 @@ function App() {
                 </p>
                 <p>
                 As a backend developer, I architect scalable APIs, build real-time data pipelines, and leverage machine-learning insights to drive smarter systems. 
-                Off the clock, you’ll find me jamming with friends, diving into my favorite games, or exploring new backend tools.
+                Off the clock, you'll find me jamming with friends, diving into my favorite games, or exploring new backend tools.
                 </p>
                 <p>
                   I'm passionate about turning complex problems into elegant solutions and sharing my work with the developer community.
@@ -360,10 +420,10 @@ function App() {
                     <img 
                       src={project.image} 
                       alt={project.title}
-                      className={`w-full h-full transition-all duration-400 group-hover:grayscale-0 ${
+                      className={`w-full h-full transition-all duration-400 ${
                         project.title === "Husky Laundry" 
-                          ? "object-cover object-center scale-110" 
-                          : "object-cover grayscale"
+                          ? "object-cover object-center scale-110 grayscale group-hover:grayscale-0" 
+                          : "object-cover grayscale group-hover:grayscale-0"
                       }`}
                     />
                   </div>
@@ -382,7 +442,7 @@ function App() {
               href="https://github.com/ahan-jain"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 bg-[#015FFC] hover:bg-[#0150d4] text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              className="inline-flex items-center space-x-2 bg-[#00FF7F] hover:bg-[#00D16B] text-black px-8 py-3 rounded-lg font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg"
             >
               <span>View All Projects</span>
             </a>
