@@ -108,7 +108,7 @@ function App() {
   const toolboxData = [
     {
       category: "Languages",
-      items: ["C", "Java", "Python", "JavaScript", "R"]
+      items: ["Python", "Java", "C", "SQL", "JavaScript", "R", "Racket"]
     },
     {
       category: "Web & Backend",
