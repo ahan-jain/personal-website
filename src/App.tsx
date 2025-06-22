@@ -16,6 +16,11 @@ function App() {
     "AI & ML enthusiast"
   ];
 
+  // Scroll to top on page load/refresh
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsNavbarSolid(window.scrollY > 100);
@@ -93,7 +98,7 @@ function App() {
       title: "Three Trios",
       description: "MVC card game implementation in Java",
       image: "/midgame_final.png",
-      githubLink: "https://github.com/ahan-jain/NEU-Projects/tree/main/Java%20Projects/Solo%20Red",
+      githubLink: "https://github.com/ahan-jain/NEU-Projects/tree/main/Java%20Projects/Three%20Trios",
       liveLink: null
     },
     {
@@ -226,7 +231,7 @@ function App() {
                 </p>
                 <p>
                   As a backend developer, I architect scalable APIs and robust systems that power seamless experiences. 
-                  Off the clock, you'll find me jamming to music, diving into my favorite games, or leading teams to innovate.
+                  Off the clock, you'll find me jamming with my friends, diving into my favorite games, or leading teams to innovate.
                 </p>
                 <p>
                   I'm passionate about turning complex problems into elegant solutions and sharing my work with the developer community.
