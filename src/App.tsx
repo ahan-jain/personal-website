@@ -301,6 +301,14 @@ function App() {
               {/* Social Links */}
               <div className="flex space-x-6 mt-12">
                 <a 
+                  href="mailto:jain.aha@northeastern.edu"
+                  className="flex items-center space-x-2 text-gray-400 hover:text-[#00FF7F] transition-colors duration-300"
+                  aria-label="Email"
+                >
+                  <Mail className="w-5 h-5" />
+                  <span className="underline-animation">Email</span>
+                </a>
+                <a 
                   href="https://linkedin.com/in/ahanjain" 
                   className="flex items-center space-x-2 text-gray-400 hover:text-[#0077B5] transition-colors duration-300"
                   aria-label="LinkedIn"
@@ -470,6 +478,13 @@ function App() {
             
             {/* Footer Social Links */}
             <div className="flex space-x-6">
+              <a 
+                href="mailto:jain.aha@northeastern.edu"
+                className="text-gray-400 hover:text-[#00FF7F] transition-colors duration-300"
+                aria-label="Email"
+              >
+                <Mail className="w-6 h-6" />
+              </a>
               <a 
                 href="https://github.com/ahan-jain"
                 target="_blank"
