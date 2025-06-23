@@ -302,10 +302,6 @@ function App() {
               <div className="flex space-x-6 mt-12">
                 <a 
                   href="mailto:jain.aha@northeastern.edu"
-                  onClick={e => {
-                    e.preventDefault()
-                    window.location.href = 'mailto:jain.aha@northeastern.edu'
-                  }}
                   className="flex items-center space-x-2 text-gray-400 hover:text-[#00FF7F] transition-colors duration-300"
                   aria-label="Email"
                 >
