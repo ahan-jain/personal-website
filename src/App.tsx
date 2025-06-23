@@ -167,7 +167,7 @@ function App() {
       title: "Next-Word Predictor",
       description: "LSTM text model for intelligent word prediction",
       image: "/neural_network_prediction.jpg",
-      githubLink: "https://github.com/ahan-jain/Neural-Text-Generation/blob/main/README.md",
+      githubLink: "https://github.com/ahan-jain/Neural-Text-Generation/tree/main",
       liveLink: null
     }
   ];
