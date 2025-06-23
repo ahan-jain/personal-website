@@ -336,7 +336,7 @@ function App() {
         </div>
       </section>
 
-      {/* My Toolbox Section - Smaller and More Proportionate */}
+      {/* My Toolbox Section - Enhanced with Smooth Hover Animations */}
       <section id="toolbox" className="flex items-center justify-center grain-texture px-8 py-32">
         <div className="max-w-7xl mx-auto w-full">
           <h2 className="text-3xl md:text-4xl font-semibold mb-16 text-center fade-in-up">
@@ -359,12 +359,17 @@ function App() {
                 <tbody>
                   <tr>
                     {toolboxData.map((category, categoryIndex) => (
-                      <td key={categoryIndex} className="px-6 py-6 align-top border-r border-gray-800 last:border-r-0">
+                      <td key={categoryIndex} className="px-6 py-6 align-top border-r border-gray-800 last:border-r-0 pointer-events-auto">
                         <div className="space-y-3">
                           {category.items.map((item, itemIndex) => (
                             <div 
                               key={itemIndex}
-                              className="bg-[#0A0A0A] px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-[#015FFC] hover:text-white hover:scale-105 hover:shadow-lg transition-all duration-300 cursor-default transform"
+                              className="toolbox-item bg-[#0A0A0A] px-3 py-2 rounded-md text-sm font-medium text-white cursor-default"
+                              style={{
+                                willChange: 'transform, background-color, box-shadow',
+                                transition: 'all 200ms ease-in-out',
+                                transformOrigin: 'center'
+                              }}
                             >
                               {item}
                             </div>
@@ -389,7 +394,12 @@ function App() {
                   {category.items.map((item, itemIndex) => (
                     <div 
                       key={itemIndex}
-                      className="bg-[#0A0A0A] px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-[#015FFC] hover:text-white hover:scale-105 hover:shadow-lg transition-all duration-300 cursor-default text-center transform"
+                      className="toolbox-item bg-[#0A0A0A] px-3 py-2 rounded-md text-sm font-medium text-white cursor-default text-center"
+                      style={{
+                        willChange: 'transform, background-color, box-shadow',
+                        transition: 'all 200ms ease-in-out',
+                        transformOrigin: 'center'
+                      }}
                     >
                       {item}
                     </div>
@@ -482,6 +492,38 @@ function App() {
           </div>
         </div>
       </footer>
+
+      {/* Enhanced CSS for Smooth Toolbox Hover Animations */}
+      <style jsx>{`
+        .toolbox-item:hover {
+          background-color: #015FFC !important;
+          color: white !important;
+          transform: scale(1.05) !important;
+          box-shadow: 0 8px 25px -8px rgba(1, 95, 252, 0.4) !important;
+        }
+        
+        /* Ensure smooth transitions even during rapid cursor movement */
+        .toolbox-item {
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+        }
+        
+        /* Prevent hover dead zones */
+        td {
+          margin: 0 !important;
+          padding: 1.5rem !important;
+        }
+        
+        .space-y-3 > * + * {
+          margin-top: 0.75rem !important;
+        }
+        
+        .gap-3 {
+          gap: 0.75rem !important;
+        }
+      `}</style>
     </div>
   );
 }
