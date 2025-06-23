@@ -336,21 +336,21 @@ function App() {
         </div>
       </section>
 
-      {/* My Toolbox Section */}
-      <section id="toolbox" className="min-h-screen flex items-center justify-center grain-texture px-8 py-32">
-        <div className="max-w-7xl mx-auto w-full">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-16 text-center fade-in-up">
+      {/* My Toolbox Section - Enhanced and Bigger */}
+      <section id="toolbox" className="min-h-screen flex items-center justify-center grain-texture px-8 py-40">
+        <div className="max-w-8xl mx-auto w-full">
+          <h2 className="text-4xl md:text-5xl font-semibold mb-20 text-center fade-in-up">
             My Toolbox
           </h2>
           
-          {/* Desktop Table View */}
+          {/* Desktop Table View - Enhanced */}
           <div className="hidden lg:block fade-in-up">
-            <div className="bg-[#1a1a1a] rounded-lg overflow-hidden border border-gray-800">
+            <div className="bg-[#1a1a1a] rounded-xl overflow-hidden border border-gray-800 shadow-2xl">
               <table className="w-full">
                 <thead>
                   <tr className="bg-[#2a2a2a] border-b border-gray-700">
                     {toolboxData.map((category, index) => (
-                      <th key={index} className="px-6 py-4 text-left font-semibold text-[#00FF7F] text-lg">
+                      <th key={index} className="px-8 py-6 text-left font-semibold text-[#00FF7F] text-xl">
                         {category.category}
                       </th>
                     ))}
@@ -359,12 +359,12 @@ function App() {
                 <tbody>
                   <tr>
                     {toolboxData.map((category, categoryIndex) => (
-                      <td key={categoryIndex} className="px-6 py-6 align-top border-r border-gray-800 last:border-r-0">
-                        <div className="space-y-3">
+                      <td key={categoryIndex} className="px-8 py-8 align-top border-r border-gray-800 last:border-r-0">
+                        <div className="space-y-4">
                           {category.items.map((item, itemIndex) => (
                             <div 
                               key={itemIndex}
-                              className="bg-[#0A0A0A] px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-[#015FFC] hover:text-white transition-all duration-300 cursor-default"
+                              className="bg-[#0A0A0A] px-4 py-3 rounded-lg text-base font-medium text-white hover:bg-[#015FFC] hover:text-white hover:scale-105 hover:shadow-lg transition-all duration-300 cursor-default transform"
                             >
                               {item}
                             </div>
@@ -378,18 +378,18 @@ function App() {
             </div>
           </div>
 
-          {/* Mobile/Tablet Card View */}
-          <div className="lg:hidden space-y-8 fade-in-up">
+          {/* Mobile/Tablet Card View - Enhanced */}
+          <div className="lg:hidden space-y-10 fade-in-up">
             {toolboxData.map((category, index) => (
-              <div key={index} className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-800">
-                <h3 className="text-xl font-semibold text-[#00FF7F] mb-4">
+              <div key={index} className="bg-[#1a1a1a] rounded-xl p-8 border border-gray-800 shadow-xl">
+                <h3 className="text-2xl font-semibold text-[#00FF7F] mb-6">
                   {category.category}
                 </h3>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                   {category.items.map((item, itemIndex) => (
                     <div 
                       key={itemIndex}
-                      className="bg-[#0A0A0A] px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-[#015FFC] hover:text-white transition-all duration-300 cursor-default text-center"
+                      className="bg-[#0A0A0A] px-4 py-3 rounded-lg text-base font-medium text-white hover:bg-[#015FFC] hover:text-white hover:scale-105 hover:shadow-lg transition-all duration-300 cursor-default text-center transform"
                     >
                       {item}
                     </div>
