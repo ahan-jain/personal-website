@@ -20,7 +20,7 @@ function App() {
   const typingPhrases = [
     "a CS Student @ Northeastern University",
     "an Incoming Software Engineer @ Darby",
-    "a Pianist",
+    "a Pianist, Drummer, Guitarist and Vocalist",
     "a Backend Developer",
     "an AI & ML enthusiast",
     "a Soccer Aficionado"
