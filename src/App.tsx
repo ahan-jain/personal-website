@@ -18,10 +18,12 @@ function App() {
   const targetTextRef = useRef('');
 
   const typingPhrases = [
-    "Computer Science @ Northeastern University",
+    "Computer Science Student @ Northeastern University",
     "Incoming Software Engineer @ Darby",
+    "Pianist",
     "Backend Developer",
-    "AI & ML enthusiast"
+    "AI & ML enthusiast",
+    "Soccer Aficionado"
   ];
 
   // Scroll to top on page load/refresh
