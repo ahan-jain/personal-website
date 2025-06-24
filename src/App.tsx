@@ -252,7 +252,7 @@ function App() {
              Hi! I'm Ahan.
           </h1>
           <div className="hero-bio text-xl md:text-2xl font-light tracking-wide mb-16 fade-in-up max-w-3xl mx-auto min-h-[3rem] flex items-center justify-center text-center" style={{letterSpacing: '0.2px'}}>
-            <div className="font-mono flex items-center">
+            <div className="font-mono flex items-center whitespace-nowrap">
   <span className="min-h-[1.5em] flex items-center">
     I’m&nbsp;<span className="text-[#00FF7F]">{currentText}</span>
   </span>
