@@ -18,12 +18,12 @@ function App() {
   const targetTextRef = useRef('');
 
   const typingPhrases = [
-    "Computer Science Student @ Northeastern University",
-    "Incoming Software Engineer @ Darby",
-    "Pianist",
-    "Backend Developer",
-    "AI & ML enthusiast",
-    "Soccer Aficionado"
+    "a CS Student @ Northeastern University",
+    "an Incoming Software Engineer @ Darby",
+    "a Pianist",
+    "a Backend Developer",
+    "an AI & ML enthusiast",
+    "a Soccer Aficionado"
   ];
 
   // Scroll to top on page load/refresh
@@ -251,11 +251,11 @@ function App() {
           <h1 className="hero-headline text-6xl md:text-7xl lg:text-8xl font-bold mb-8 fade-in-up">
              Hi! I'm Ahan.
           </h1>
-          <div className="hero-bio text-xl md:text-2xl font-light tracking-wide mb-16 fade-in-up max-w-2xl mx-auto min-h-[3rem] flex items-center justify-center text-center" style={{letterSpacing: '0.2px'}}>
+          <div className="hero-bio text-xl md:text-2xl font-light tracking-wide mb-16 fade-in-up max-w-3xl mx-auto min-h-[3rem] flex items-center justify-center text-center" style={{letterSpacing: '0.2px'}}>
             <div className="font-mono flex items-center">
-              <span className="inline-block min-h-[1.5em] flex items-center">
-                {currentText}
-              </span>
+  <span className="min-h-[1.5em] flex items-center">
+    I’m&nbsp;<span className="text-[#00FF7F]">{currentText}</span>
+  </span>
               <span 
                 className={`inline-block w-3 h-7 bg-[#00FF7F] ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-150`}
               ></span>
@@ -273,20 +273,20 @@ function App() {
         </div>
       </section>
 
-      {/* Biography Section */}
-      <section id="about" className="py-32 px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+      {/* Biography Section - Full Screen Height */}
+      <section id="about" className="min-h-screen flex items-center justify-center py-16 px-8 bg-[#0A0A0A]">
+        <div className="max-w-7xl mx-auto w-full">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div className="fade-in-up">
               <img 
                 src="/FullSizeRender.jpg" 
                 alt="Ahan Jain Portrait" 
-                className="w-full h-[400px] md:h-[600px] lg:h-[600px] object-cover rounded-lg hover-zoom"
+                className="w-full h-[500px] md:h-[700px] lg:h-[700px] object-cover rounded-lg hover-zoom shadow-2xl"
               />
             </div>
             <div className="fade-in-up">
-              <h2 className="text-3xl md:text-4xl font-semibold mb-8">About Me</h2>
-              <div className="space-y-6 text-lg font-light leading-relaxed">
+              <h2 className="text-4xl md:text-5xl font-semibold mb-10">About Me</h2>
+              <div className="space-y-8 text-xl font-light leading-relaxed">
                 <p>
                   Junior CS student at Northeastern concentrating in AI, driven to build software that makes a real difference. 
                   I thrive on tackling complex challenges and bringing creative ideas to life.
@@ -301,35 +301,35 @@ function App() {
               </div>
               
               {/* Social Links */}
-              <div className="flex space-x-6 mt-12">
+              <div className="flex space-x-8 mt-16">
                 <a 
                   href="https://linkedin.com/in/ahanjain" 
-                  className="flex items-center space-x-2 text-gray-400 hover:text-[#0077B5] transition-colors duration-300"
+                  className="flex items-center space-x-3 text-gray-400 hover:text-[#0077B5] transition-colors duration-300 text-lg"
                   aria-label="LinkedIn"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Linkedin className="w-5 h-5" />
+                  <Linkedin className="w-6 h-6" />
                   <span className="underline-animation">LinkedIn</span>
                 </a>
                 <a 
                   href="https://github.com/ahan-jain" 
-                  className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-300"
+                  className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors duration-300 text-lg"
                   aria-label="GitHub"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Github className="w-5 h-5" />
+                  <Github className="w-6 h-6" />
                   <span className="underline-animation">GitHub</span>
                 </a>
                 <a 
                   href="/Ahan_Jain_Resume.pdf" 
-                  className="flex items-center space-x-2 text-gray-400 hover:text-[#00FF7F] transition-colors duration-300"
+                  className="flex items-center space-x-3 text-gray-400 hover:text-[#00FF7F] transition-colors duration-300 text-lg"
                   aria-label="Resume"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <FileText className="w-5 h-5" />
+                  <FileText className="w-6 h-6" />
                   <span className="underline-animation">Resume</span>
                 </a>
               </div>
@@ -338,21 +338,21 @@ function App() {
         </div>
       </section>
 
-      {/* My Toolbox Section - Enhanced with Smooth Hover Animations */}
-      <section id="toolbox" className="flex items-center justify-center grain-texture px-8 py-32">
+      {/* My Toolbox Section - Full Screen Height */}
+      <section id="toolbox" className="min-h-screen flex items-center justify-center grain-texture px-8 py-16 bg-[#111111]">
         <div className="max-w-7xl mx-auto w-full">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-16 text-center fade-in-up">
+          <h2 className="text-4xl md:text-5xl font-semibold mb-20 text-center fade-in-up">
             My Toolbox
           </h2>
           
           {/* Desktop Table View */}
           <div className="hidden lg:block fade-in-up">
-            <div className="bg-[#1a1a1a] rounded-lg overflow-hidden border border-gray-800 shadow-xl">
+            <div className="bg-[#1a1a1a] rounded-xl overflow-hidden border border-gray-800 shadow-2xl">
               <table className="w-full">
                 <thead>
                   <tr className="bg-[#2a2a2a] border-b border-gray-700">
                     {toolboxData.map((category, index) => (
-                      <th key={index} className="px-6 py-5 text-left font-semibold text-[#00FF7F] text-lg">
+                      <th key={index} className="px-8 py-7 text-left font-semibold text-[#00FF7F] text-xl">
                         {category.category}
                       </th>
                     ))}
@@ -361,12 +361,12 @@ function App() {
                 <tbody>
                   <tr>
                     {toolboxData.map((category, categoryIndex) => (
-                      <td key={categoryIndex} className="px-6 py-6 align-top border-r border-gray-800 last:border-r-0 pointer-events-auto">
-                        <div className="space-y-3">
+                      <td key={categoryIndex} className="px-8 py-8 align-top border-r border-gray-800 last:border-r-0 pointer-events-auto">
+                        <div className="space-y-4">
                           {category.items.map((item, itemIndex) => (
                             <div 
                               key={itemIndex}
-                              className="toolbox-item bg-[#0A0A0A] px-3 py-2 rounded-md text-sm font-medium text-white cursor-default"
+                              className="toolbox-item bg-[#0A0A0A] px-4 py-3 rounded-lg text-base font-medium text-white cursor-default"
                               style={{
                                 willChange: 'transform, background-color, box-shadow',
                                 transition: 'all 200ms ease-in-out',
@@ -386,17 +386,17 @@ function App() {
           </div>
 
           {/* Mobile/Tablet Card View */}
-          <div className="lg:hidden space-y-8 fade-in-up">
+          <div className="lg:hidden space-y-10 fade-in-up">
             {toolboxData.map((category, index) => (
-              <div key={index} className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-800 shadow-lg">
-                <h3 className="text-xl font-semibold text-[#00FF7F] mb-4">
+              <div key={index} className="bg-[#1a1a1a] rounded-xl p-8 border border-gray-800 shadow-xl">
+                <h3 className="text-2xl font-semibold text-[#00FF7F] mb-6">
                   {category.category}
                 </h3>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                   {category.items.map((item, itemIndex) => (
                     <div 
                       key={itemIndex}
-                      className="toolbox-item bg-[#0A0A0A] px-3 py-2 rounded-md text-sm font-medium text-white cursor-default text-center"
+                      className="toolbox-item bg-[#0A0A0A] px-4 py-3 rounded-lg text-base font-medium text-white cursor-default text-center"
                       style={{
                         willChange: 'transform, background-color, box-shadow',
                         transition: 'all 200ms ease-in-out',
@@ -413,20 +413,20 @@ function App() {
         </div>
       </section>
 
-      {/* Portfolio Section */}
-      <section id="portfolio" className="py-32 px-8">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-16 text-center fade-in-up">
+      {/* Portfolio Section - Full Screen Height */}
+      <section id="portfolio" className="min-h-screen flex items-center justify-center py-16 px-8 bg-[#0A0A0A]">
+        <div className="max-w-7xl mx-auto w-full">
+          <h2 className="text-4xl md:text-5xl font-semibold mb-20 text-center fade-in-up">
             Projects
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
             {portfolioProjects.map((project, index) => (
               <div key={index} className="fade-in-up card-hover">
                 <a 
                   href={project.githubLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block bg-[#1a1a1a] rounded-lg overflow-hidden group h-full flex flex-col cursor-pointer"
+                  className="block bg-[#1a1a1a] rounded-xl overflow-hidden group h-full flex flex-col cursor-pointer shadow-xl"
                 >
                   <div className="aspect-video overflow-hidden">
                     <img 
@@ -439,9 +439,9 @@ function App() {
                       }`}
                     />
                   </div>
-                  <div className="p-6 flex-1 flex flex-col">
-                    <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                    <p className="text-gray-400 mb-4 font-light flex-1">{project.description}</p>
+                  <div className="p-8 flex-1 flex flex-col">
+                    <h3 className="text-2xl font-semibold mb-3">{project.title}</h3>
+                    <p className="text-gray-400 mb-6 font-light flex-1 text-lg">{project.description}</p>
                   </div>
                 </a>
               </div>
@@ -449,12 +449,12 @@ function App() {
           </div>
           
           {/* View All Projects Button */}
-          <div className="text-center mt-12 fade-in-up">
+          <div className="text-center mt-16 fade-in-up">
             <a 
               href="https://github.com/ahan-jain"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 bg-white hover:bg-[#015FFC] text-black hover:text-white px-8 py-3 rounded-lg font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              className="inline-flex items-center space-x-3 bg-white hover:bg-[#015FFC] text-black hover:text-white px-10 py-4 rounded-xl font-bold transition-all duration-300 hover:scale-105 hover:shadow-xl text-lg"
             >
               <span>View All Projects</span>
             </a>
@@ -463,15 +463,15 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="py-16 px-8 border-t border-gray-800">
+      <footer className="py-20 px-8 border-t border-gray-800 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 font-light mb-4 md:mb-0">
+            <p className="text-gray-400 font-light mb-6 md:mb-0 text-lg">
               © Ahan Jain
             </p>
             
             {/* Footer Social Links */}
-            <div className="flex space-x-6">
+            <div className="flex space-x-8">
               <a 
                 href="https://github.com/ahan-jain"
                 target="_blank"
@@ -479,7 +479,7 @@ function App() {
                 className="text-gray-400 hover:text-white transition-colors duration-300"
                 aria-label="GitHub"
               >
-                <Github className="w-6 h-6" />
+                <Github className="w-7 h-7" />
               </a>
               <a 
                 href="https://linkedin.com/in/ahanjain"
@@ -488,7 +488,7 @@ function App() {
                 className="text-gray-400 hover:text-[#0077B5] transition-colors duration-300"
                 aria-label="LinkedIn"
               >
-                <Linkedin className="w-6 h-6" />
+                <Linkedin className="w-7 h-7" />
               </a>
             </div>
           </div>
@@ -515,15 +515,15 @@ function App() {
         /* Prevent hover dead zones */
         td {
           margin: 0 !important;
-          padding: 1.5rem !important;
+          padding: 2rem !important;
         }
         
-        .space-y-3 > * + * {
-          margin-top: 0.75rem !important;
+        .space-y-4 > * + * {
+          margin-top: 1rem !important;
         }
         
-        .gap-3 {
-          gap: 0.75rem !important;
+        .gap-4 {
+          gap: 1rem !important;
         }
       `}</style>
     </div>
