@@ -27,6 +27,12 @@
         font-family: 'Inter', sans-serif;
       }
       
+      body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+      
       .grain-texture {
         background-image: 
           radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0);
@@ -169,14 +175,34 @@
         }
       }
       
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
+      /* Mobile-first responsive design */
+      @media (max-width: 640px) {
         .hero-text-container {
-          padding: 2rem 1.5rem;
+          padding: 1rem;
         }
         
         .hero-headline {
-          font-size: 3.5rem;
+          font-size: 2.5rem;
+          line-height: 1.1;
+          margin-bottom: 1.5rem;
+        }
+        
+        .hero-bio {
+          font-size: 1rem;
+          line-height: 1.5;
+          padding: 0 0.5rem;
+        }
+        
+        /* Prevent text overflow on mobile */
+        .font-mono {
+          word-break: break-word;
+          hyphens: auto;
+        }
+      }
+      
+      @media (min-width: 641px) and (max-width: 768px) {
+        .hero-headline {
+          font-size: 3rem;
           line-height: 1.1;
         }
         
@@ -185,13 +211,37 @@
         }
       }
       
-      @media (max-width: 480px) {
+      @media (min-width: 769px) and (max-width: 1024px) {
         .hero-headline {
-          font-size: 2.75rem;
+          font-size: 4rem;
         }
         
         .hero-bio {
-          font-size: 1rem;
+          font-size: 1.25rem;
+        }
+      }
+      
+      /* Ensure proper text wrapping and prevent overflow */
+      * {
+        box-sizing: border-box;
+      }
+      
+      .text-wrap {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+      }
+      
+      /* Fix for mobile viewport issues */
+      @media screen and (max-width: 640px) {
+        html, body {
+          overflow-x: hidden;
+          width: 100%;
+        }
+        
+        .min-h-screen {
+          min-height: 100vh;
+          min-height: -webkit-fill-available;
         }
       }
     </style>

@@ -207,7 +207,7 @@ function App() {
   return (
     <div className="bg-[#0A0A0A] text-white font-['Inter'] overflow-x-hidden">
       {/* Fixed Navbar */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 px-8 py-6 transition-all duration-400 ${
+      <nav className={`fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 py-4 sm:py-6 transition-all duration-400 ${
         isNavbarSolid ? 'navbar-solid' : 'bg-transparent'
       }`}>
         <div className="max-w-7xl mx-auto flex justify-between items-center">
@@ -227,7 +227,7 @@ function App() {
       </nav>
 
       {/* Hero Section with Green Particles Background */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0A0A]">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0A0A] px-4 sm:px-6 lg:px-8">
         {/* Green Particles Background with Continuous Animation */}
         <div className="absolute inset-0 w-full h-full">
           <Particles
@@ -246,47 +246,58 @@ function App() {
           />
         </div>
         
-        {/* Hero Content - No backdrop box */}
-        <div className="text-center z-10 px-8 relative">
-          <h1 className="hero-headline text-6xl md:text-7xl lg:text-8xl font-bold mb-8 fade-in-up">
+        {/* Hero Content - Mobile Optimized */}
+        <div className="text-center z-10 w-full max-w-6xl mx-auto">
+          <h1 className="hero-headline text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 sm:mb-8 fade-in-up leading-tight">
              Hi! I'm Ahan.
           </h1>
-          <div className="hero-bio text-xl md:text-2xl font-light tracking-wide mb-16 fade-in-up max-w-3xl mx-auto min-h-[3rem] flex items-center justify-center text-center" style={{letterSpacing: '0.2px'}}>
-            <div className="font-mono flex items-center whitespace-nowrap">
   <span className="min-h-[1.5em] flex items-center">
     I’m&nbsp;<span className="text-[#00FF7F]">{currentText}</span>
-  </span>
-              <span 
-                className={`inline-block w-3 h-7 bg-[#00FF7F] ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-150`}
-              ></span>
+          <div className="hero-bio text-base sm:text-lg md:text-xl lg:text-2xl font-light tracking-wide mb-12 sm:mb-16 fade-in-up max-w-5xl mx-auto min-h-[2.5rem] sm:min-h-[3rem] flex items-center justify-center text-center px-4" style={{letterSpacing: '0.2px'}}>
+            <div className="font-mono w-full">
+              <div className="text-center leading-relaxed">
+                <span className="whitespace-nowrap">I'm&nbsp;</span>
+                <span className="text-[#00FF7F] break-words">
+                  {currentText}
+                  <span 
+                    className={`inline-block w-2 sm:w-3 bg-[#00FF7F] ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-150`}
+                    style={{ 
+                      height: '1.2em',
+                      transform: 'translateY(0.2em)'
+                    }}
+                  ></span>
+                </span>
+              </div>
             </div>
           </div>
           
           {/* Navigable scroll arrow - points to about section */}
           <a 
             href="#about" 
-            className="scroll-arrow inline-block mt-8 text-white/60 hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer"
+            className="scroll-arrow inline-block mt-4 sm:mt-8 text-white/60 hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer"
             aria-label="Scroll to About section"
           >
-            <ChevronDown className="w-10 h-10 mx-auto animate-bounce" />
+            <ChevronDown className="w-8 h-8 sm:w-10 sm:h-10 mx-auto animate-bounce" />
           </a>
         </div>
       </section>
 
-      {/* Biography Section - Full Screen Height */}
-      <section id="about" className="min-h-screen flex items-center justify-center py-16 px-8 bg-[#0A0A0A]">
+      {/* Biography Section - Image Left, Text Right on Desktop */}
+      <section id="about" className="min-h-screen flex items-center justify-center py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto w-full">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <div className="fade-in-up">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
+            {/* Image - First on mobile, first on desktop */}
+            <div className="fade-in-up order-1">
               <img 
                 src="/FullSizeRender.jpg" 
                 alt="Ahan Jain Portrait" 
-                className="w-full h-[500px] md:h-[700px] lg:h-[700px] object-cover rounded-lg hover-zoom shadow-2xl"
+                className="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] object-cover rounded-lg hover-zoom shadow-2xl"
               />
             </div>
-            <div className="fade-in-up">
-              <h2 className="text-4xl md:text-5xl font-semibold mb-10">About Me</h2>
-              <div className="space-y-8 text-xl font-light leading-relaxed">
+            {/* Text - Second on mobile, second on desktop */}
+            <div className="fade-in-up order-2 h-full flex flex-col justify-center">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-8 sm:mb-10">About Me</h2>
+              <div className="space-y-6 sm:space-y-8 text-lg sm:text-xl font-light leading-relaxed">
                 <p>
                   Junior CS student at Northeastern concentrating in AI, driven to build software that makes a real difference. 
                   I thrive on tackling complex challenges and bringing creative ideas to life.
@@ -301,47 +312,47 @@ function App() {
               </div>
               
               {/* Social Links */}
-              <div className="flex space-x-8 mt-16">
-                <a 
-                  href="https://linkedin.com/in/ahanjain" 
-                  className="flex items-center space-x-3 text-gray-400 hover:text-[#0077B5] transition-colors duration-300 text-lg"
-                  aria-label="LinkedIn"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Linkedin className="w-6 h-6" />
-                  <span className="underline-animation">LinkedIn</span>
-                </a>
-                <a 
-                  href="https://github.com/ahan-jain" 
-                  className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors duration-300 text-lg"
-                  aria-label="GitHub"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Github className="w-6 h-6" />
-                  <span className="underline-animation">GitHub</span>
-                </a>
-                <a 
-                  href="/Ahan_Jain_Resume.pdf" 
-                  className="flex items-center space-x-3 text-gray-400 hover:text-[#00FF7F] transition-colors duration-300 text-lg"
-                  aria-label="Resume"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FileText className="w-6 h-6" />
-                  <span className="underline-animation">Resume</span>
-                </a>
-              </div>
+<div className="flex flex-col sm:flex-row sm:items-start sm:space-x-8 mt-12 sm:mt-16">
+  <a
+    href="https://linkedin.com/in/ahanjain"
+    className="flex items-center space-x-3 text-gray-400 hover:text-[#0077B5] transition duration-300 mb-4 sm:mb-0"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Linkedin className="w-5 h-5 flex-shrink-0"
+      style={{ transform: 'translateY(1px)' }}/>
+    <span className="linkedin-underline">LinkedIn</span>
+  </a>
+
+  <a
+    href="https://github.com/ahan-jain"
+    className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors duration-300 mb-4 sm:mb-0"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Github className="w-5 h-5 flex-shrink-0" />
+    <span className="underline-animation">GitHub</span>
+  </a>
+
+  <a
+    href="/Ahan_Jain_Resume.pdf"
+    className="flex items-center space-x-3 text-gray-400 hover:text-[#00FF7F] transition-colors duration-300"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <FileText className="w-5 h-5 flex-shrink-0" />
+    <span className="underline-animation">Resume</span>
+  </a>
+</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* My Toolbox Section - Full Screen Height */}
-      <section id="toolbox" className="min-h-screen flex items-center justify-center grain-texture px-8 py-16 bg-[#111111]">
+      {/* My Toolbox Section - Mobile Optimized */}
+      <section id="toolbox" className="min-h-screen flex items-center justify-center grain-texture px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-[#111111]">
         <div className="max-w-7xl mx-auto w-full">
-          <h2 className="text-4xl md:text-5xl font-semibold mb-20 text-center fade-in-up">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-16 sm:mb-20 text-center fade-in-up">
             My Toolbox
           </h2>
           
@@ -386,17 +397,17 @@ function App() {
           </div>
 
           {/* Mobile/Tablet Card View */}
-          <div className="lg:hidden space-y-10 fade-in-up">
+          <div className="lg:hidden space-y-8 sm:space-y-10 fade-in-up">
             {toolboxData.map((category, index) => (
-              <div key={index} className="bg-[#1a1a1a] rounded-xl p-8 border border-gray-800 shadow-xl">
-                <h3 className="text-2xl font-semibold text-[#00FF7F] mb-6">
+              <div key={index} className="bg-[#1a1a1a] rounded-xl p-6 sm:p-8 border border-gray-800 shadow-xl">
+                <h3 className="text-xl sm:text-2xl font-semibold text-[#00FF7F] mb-4 sm:mb-6">
                   {category.category}
                 </h3>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
                   {category.items.map((item, itemIndex) => (
                     <div 
                       key={itemIndex}
-                      className="toolbox-item bg-[#0A0A0A] px-4 py-3 rounded-lg text-base font-medium text-white cursor-default text-center"
+                      className="toolbox-item bg-[#0A0A0A] px-3 sm:px-4 py-2 sm:py-3 rounded-lg text-sm sm:text-base font-medium text-white cursor-default text-center"
                       style={{
                         willChange: 'transform, background-color, box-shadow',
                         transition: 'all 200ms ease-in-out',
@@ -413,13 +424,13 @@ function App() {
         </div>
       </section>
 
-      {/* Portfolio Section - Full Screen Height */}
-      <section id="portfolio" className="min-h-screen flex items-center justify-center py-16 px-8 bg-[#0A0A0A]">
+      {/* Portfolio Section - Mobile Optimized */}
+      <section id="portfolio" className="min-h-screen flex items-center justify-center py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto w-full">
-          <h2 className="text-4xl md:text-5xl font-semibold mb-20 text-center fade-in-up">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-16 sm:mb-20 text-center fade-in-up">
             Projects
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
             {portfolioProjects.map((project, index) => (
               <div key={index} className="fade-in-up card-hover">
                 <a 
@@ -439,9 +450,9 @@ function App() {
                       }`}
                     />
                   </div>
-                  <div className="p-8 flex-1 flex flex-col">
-                    <h3 className="text-2xl font-semibold mb-3">{project.title}</h3>
-                    <p className="text-gray-400 mb-6 font-light flex-1 text-lg">{project.description}</p>
+                  <div className="p-6 sm:p-8 flex-1 flex flex-col">
+                    <h3 className="text-xl sm:text-2xl font-semibold mb-3">{project.title}</h3>
+                    <p className="text-gray-400 mb-6 font-light flex-1 text-base sm:text-lg">{project.description}</p>
                   </div>
                 </a>
               </div>
@@ -449,12 +460,12 @@ function App() {
           </div>
           
           {/* View All Projects Button */}
-          <div className="text-center mt-16 fade-in-up">
+          <div className="text-center mt-12 sm:mt-16 fade-in-up">
             <a 
               href="https://github.com/ahan-jain"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-3 bg-white hover:bg-[#015FFC] text-black hover:text-white px-10 py-4 rounded-xl font-bold transition-all duration-300 hover:scale-105 hover:shadow-xl text-lg"
+              className="inline-flex items-center space-x-3 bg-white hover:bg-[#015FFC] text-black hover:text-white px-8 sm:px-10 py-3 sm:py-4 rounded-xl font-bold transition-all duration-300 hover:scale-105 hover:shadow-xl text-base sm:text-lg"
             >
               <span>View All Projects</span>
             </a>
@@ -463,10 +474,10 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="py-20 px-8 border-t border-gray-800 bg-[#0A0A0A]">
+      <footer className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-t border-gray-800 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 font-light mb-6 md:mb-0 text-lg">
+            <p className="text-gray-400 font-light mb-6 md:mb-0 text-base sm:text-lg">
               © Ahan Jain
             </p>
             
@@ -479,7 +490,7 @@ function App() {
                 className="text-gray-400 hover:text-white transition-colors duration-300"
                 aria-label="GitHub"
               >
-                <Github className="w-7 h-7" />
+                <Github className="w-6 h-6 sm:w-7 sm:h-7" />
               </a>
               <a 
                 href="https://linkedin.com/in/ahanjain"
@@ -488,14 +499,14 @@ function App() {
                 className="text-gray-400 hover:text-[#0077B5] transition-colors duration-300"
                 aria-label="LinkedIn"
               >
-                <Linkedin className="w-7 h-7" />
+                <Linkedin className="w-6 h-6 sm:w-7 sm:h-7" />
               </a>
             </div>
           </div>
         </div>
       </footer>
 
-      {/* Enhanced CSS for Smooth Toolbox Hover Animations */}
+      {/* Enhanced CSS for Smooth Toolbox Hover Animations + Custom LinkedIn Underline */}
       <style jsx>{`
         .toolbox-item:hover {
           background-color: #015FFC !important;
@@ -524,6 +535,28 @@ function App() {
         
         .gap-4 {
           gap: 1rem !important;
+        }
+
+        /* Custom LinkedIn underline animation */
+        .linkedin-underline {
+          position: relative;
+         overflow: hidden;
+         padding-bottom: 0px;
+        }
+        
+        .linkedin-underline::after {
+          content: '';
+          position: absolute;
+          bottom: 0; /* Custom distance for LinkedIn */
+          left: -100%;
+          width: 100%;
+          height: 2px;
+          background: #015FFC; /* LinkedIn blue color */
+          transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .linkedin-underline:hover::after {
+          left: 0;
         }
       `}</style>
     </div>
