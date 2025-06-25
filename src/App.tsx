@@ -251,8 +251,6 @@ function App() {
           <h1 className="hero-headline text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 sm:mb-8 fade-in-up leading-tight">
              Hi! I'm Ahan.
           </h1>
-  <span className="min-h-[1.5em] flex items-center">
-    I’m&nbsp;<span className="text-[#00FF7F]">{currentText}</span>
           <div className="hero-bio text-base sm:text-lg md:text-xl lg:text-2xl font-light tracking-wide mb-12 sm:mb-16 fade-in-up max-w-5xl mx-auto min-h-[2.5rem] sm:min-h-[3rem] flex items-center justify-center text-center px-4" style={{letterSpacing: '0.2px'}}>
             <div className="font-mono w-full">
               <div className="text-center leading-relaxed">
