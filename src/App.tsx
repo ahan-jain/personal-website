@@ -318,7 +318,7 @@ function App() {
     rel="noopener noreferrer"
   >
     <Linkedin className="w-5 h-5 flex-shrink-0"
-      style={{ transform: 'translateY(1px)' }}/>
+      style={{ transform: 'translateY(0.5px)' }}/>
     <span className="linkedin-underline">LinkedIn</span>
   </a>
 
