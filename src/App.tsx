@@ -289,7 +289,7 @@ function App() {
               <img 
                 src="/FullSizeRender.jpg" 
                 alt="Ahan Jain Portrait" 
-                className="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] object-cover rounded-lg hover-zoom shadow-2xl"
+                className="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] object-contain rounded-lg hover-zoom shadow-2xl"
               />
             </div>
             {/* Text - Second on mobile, second on desktop */}
@@ -311,6 +311,14 @@ function App() {
               
               {/* Social Links */}
 <div className="flex flex-col sm:flex-row sm:items-start sm:space-x-8 mt-12 sm:mt-16">
+  <a
+    href="mailto:ahan@ahanjain.com,jain.aha@northeastern.edu"
+    className="flex items-center space-x-3 text-gray-400 hover:text-[#00FF7F] transition-colors duration-300 mb-4 sm:mb-0"
+  >
+    <Mail className="w-5 h-5 flex-shrink-0" />
+    <span className="underline-animation">Email</span>
+  </a>
+
   <a
     href="https://linkedin.com/in/ahanjain"
     className="flex items-center space-x-3 text-gray-400 hover:text-[#0077B5] transition duration-300 mb-4 sm:mb-0"
@@ -481,6 +489,13 @@ function App() {
             
             {/* Footer Social Links */}
             <div className="flex space-x-8">
+              <a 
+                href="mailto:ahan@ahanjain.com,jain.aha@northeastern.edu"
+                className="text-gray-400 hover:text-[#00FF7F] transition-colors duration-300"
+                aria-label="Email"
+              >
+                <Mail className="w-6 h-6 sm:w-7 sm:h-7" />
+              </a>
               <a 
                 href="https://github.com/ahan-jain"
                 target="_blank"
