@@ -519,16 +519,23 @@ function App() {
                   className="block bg-[#1a1a1a] rounded-xl overflow-hidden group h-full flex flex-col cursor-pointer shadow-xl w-full text-left border border-[#1a1a1a] transition-all duration-400 focus:outline-none focus:ring-0"
                 >
                   <div className="aspect-video overflow-hidden">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className={`w-full h-full transition-all duration-400 ${
-                        project.title === "Husky Laundry" 
-                          ? "object-cover object-top scale-100 grayscale group-hover:grayscale-0" 
-                          : "object-cover grayscale group-hover:grayscale-0"
-                      }`}
-                    />
-                  </div>
+  <img 
+    src={project.image} 
+    alt={project.title}
+    className={`w-full h-full transition-all duration-400 grayscale group-hover:grayscale-0 ${
+      project.title === "Husky Laundry" 
+        ? "object-cover object-top scale-100" 
+        : project.title === "Three Trios"
+        ? "object-cover scale-100"      // we’ll override its position via style
+        : "object-fill"
+    }`}
+    style={
+      project.title === "Three Trios"
+        ? { objectPosition: '2% 2%' }  // ← tweak these X% Y% until you frame your desired region
+        : undefined
+    }
+  />
+</div>
                   <div className="p-6 sm:p-8 flex-1 flex flex-col">
                     <h3 className="text-xl sm:text-2xl font-semibold mb-3">{project.title}</h3>
                     <p className="text-gray-400 mb-6 font-light flex-1 text-base sm:text-lg">{project.description}</p>
@@ -583,18 +590,24 @@ function App() {
               <X className="w-5 h-5" />
             </button>
 
-            {/* Project Image */}
-            <div className="aspect-video overflow-hidden rounded-t-xl">
-              <img 
-                src={portfolioProjects[selectedProject].image} 
-                alt={portfolioProjects[selectedProject].title}
-                className={`w-full h-full ${
-                  portfolioProjects[selectedProject].title === "Husky Laundry" 
-                    ? "object-cover object-top scale-100" 
-                    : "object-cover"
-                }`}
-              />
-            </div>
+{/* Project Image */}
+<div className="aspect-video overflow-hidden rounded-t-xl">
+  <img
+    src={portfolioProjects[selectedProject].image}
+    alt={portfolioProjects[selectedProject].title}
+    className="w-full h-full transition-all duration-300"
+    style={
+      portfolioProjects[selectedProject].title === "Husky Laundry"
+        // keep your existing Husky Laundry framing
+        ? { objectFit: 'cover', objectPosition: 'center top' }
+        : portfolioProjects[selectedProject].title === "Three Trios"
+        // now match the same crop you used on the tile
+        ? { objectFit: 'cover', objectPosition: '2% 2%' }
+        // all others just center‐cover
+        : { objectFit: 'cover', objectPosition: 'center center' }
+    }
+  />
+</div>
 
             {/* Project Content */}
             <div className="p-6 sm:p-8">
