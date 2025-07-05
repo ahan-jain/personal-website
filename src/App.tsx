@@ -356,21 +356,21 @@ function App() {
       </section>
 
       {/* Biography Section - Image Left, Text Right on Desktop */}
-      <section id="about" className="min-h-screen flex items-center justify-center py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-[#0A0A0A]">
+      <section id="about" className="min-h-screen flex items-center justify-center py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto w-full">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-stretch">
             {/* Image - First on mobile, first on desktop */}
             <div className="fade-in-up order-1">
               <img 
                 src="/FullSizeRender.jpg" 
                 alt="Ahan Jain Portrait" 
-                className="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] object-cover rounded-lg hover-zoom shadow-2xl"
+                className="w-full h-[60vh] sm:h-[70vh] lg:h-[80vh] max-h-[500px] sm:max-h-[600px] lg:max-h-[700px] object-cover rounded-lg hover-zoom shadow-2xl"
               />
             </div>
             {/* Text - Second on mobile, second on desktop */}
             <div className="fade-in-up order-2 h-full flex flex-col justify-center">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-8 sm:mb-10">About Me</h2>
-              <div className="space-y-6 sm:space-y-8 text-lg sm:text-xl font-light leading-relaxed">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 sm:mb-8 lg:mb-10">About Me</h2>
+              <div className="space-y-4 sm:space-y-6 lg:space-y-8 text-base sm:text-lg lg:text-xl font-light leading-relaxed">
                 <p>
                   Junior CS student at Northeastern concentrating in AI, driven to build software that makes a real difference. 
                   I thrive on tackling complex challenges and bringing creative ideas to life.
@@ -385,10 +385,10 @@ function App() {
               </div>
               
               {/* Social Links */}
-<div className="flex flex-col sm:flex-row sm:items-start sm:space-x-8 mt-12 sm:mt-16">
+<div className="flex flex-col sm:flex-row sm:items-start sm:space-x-6 lg:space-x-8 mt-8 sm:mt-12 lg:mt-16">
   <a
     href="mailto:ahan@ahanjain.com,jain.aha@northeastern.edu"
-    className="flex items-center space-x-3 text-gray-400 hover:text-[#00FF7F] transition-colors duration-300 mb-4 sm:mb-0"
+    className="flex items-center space-x-2 sm:space-x-3 text-gray-400 hover:text-[#00FF7F] transition-colors duration-300 mb-3 sm:mb-0"
   >
     <Mail className="w-5 h-5 flex-shrink-0" />
     <span className="underline-animation">Email</span>
@@ -396,7 +396,7 @@ function App() {
 
   <a
     href="https://linkedin.com/in/ahanjain"
-    className="flex items-center space-x-3 text-gray-400 hover:text-[#0077B5] transition duration-300 mb-4 sm:mb-0"
+    className="flex items-center space-x-2 sm:space-x-3 text-gray-400 hover:text-[#0077B5] transition duration-300 mb-3 sm:mb-0"
     target="_blank"
     rel="noopener noreferrer"
   >
@@ -407,7 +407,7 @@ function App() {
 
   <a
     href="https://github.com/ahan-jain"
-    className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors duration-300 mb-4 sm:mb-0"
+    className="flex items-center space-x-2 sm:space-x-3 text-gray-400 hover:text-white transition-colors duration-300 mb-3 sm:mb-0"
     target="_blank"
     rel="noopener noreferrer"
   >
@@ -417,7 +417,7 @@ function App() {
 
   <a
     href="/Ahan_Jain_Resume.pdf"
-    className="flex items-center space-x-3 text-gray-400 hover:text-[#00FF7F] transition-colors duration-300"
+    className="flex items-center space-x-2 sm:space-x-3 text-gray-400 hover:text-[#00FF7F] transition-colors duration-300"
     target="_blank"
     rel="noopener noreferrer"
   >
@@ -431,7 +431,7 @@ function App() {
       </section>
 
       {/* My Toolbox Section - Mobile Optimized */}
-      <section id="toolbox" className="min-h-screen flex items-center justify-center grain-texture px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-[#111111]">
+      <section id="toolbox" className="min-h-screen flex items-center justify-center grain-texture px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 bg-[#111111]">
         <div className="max-w-7xl mx-auto w-full">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-16 sm:mb-20 text-center fade-in-up">
             My Toolbox
@@ -444,7 +444,7 @@ function App() {
                 <thead>
                   <tr className="bg-[#2a2a2a] border-b border-gray-700">
                     {toolboxData.map((category, index) => (
-                      <th key={index} className="px-8 py-7 text-left font-semibold text-[#00FF7F] text-xl">
+                      <th key={index} className="px-4 lg:px-6 xl:px-8 py-5 lg:py-7 text-left font-semibold text-[#00FF7F] text-lg lg:text-xl">
                         {category.category}
                       </th>
                     ))}
@@ -453,12 +453,12 @@ function App() {
                 <tbody>
                   <tr>
                     {toolboxData.map((category, categoryIndex) => (
-                      <td key={categoryIndex} className="px-8 py-8 align-top border-r border-gray-800 last:border-r-0 pointer-events-auto">
-                        <div className="space-y-4">
+                      <td key={categoryIndex} className="px-4 lg:px-6 xl:px-8 py-6 lg:py-8 align-top border-r border-gray-800 last:border-r-0 pointer-events-auto">
+                        <div className="space-y-3 lg:space-y-4">
                           {category.items.map((item, itemIndex) => (
                             <div 
                               key={itemIndex}
-                              className="toolbox-item bg-[#0A0A0A] px-4 py-3 rounded-lg text-base font-medium text-white cursor-default"
+                              className="toolbox-item bg-[#0A0A0A] px-3 lg:px-4 py-2 lg:py-3 rounded-lg text-sm lg:text-base font-medium text-white cursor-default"
                               style={{
                                 willChange: 'transform, background-color, box-shadow',
                                 transition: 'all 200ms ease-in-out',
@@ -478,17 +478,17 @@ function App() {
           </div>
 
           {/* Mobile/Tablet Card View */}
-          <div className="lg:hidden space-y-8 sm:space-y-10 fade-in-up">
+          <div className="lg:hidden space-y-6 sm:space-y-8 fade-in-up">
             {toolboxData.map((category, index) => (
-              <div key={index} className="bg-[#1a1a1a] rounded-xl p-6 sm:p-8 border border-gray-800 shadow-xl">
-                <h3 className="text-xl sm:text-2xl font-semibold text-[#00FF7F] mb-4 sm:mb-6">
+              <div key={index} className="bg-[#1a1a1a] rounded-xl p-4 sm:p-6 lg:p-8 border border-gray-800 shadow-xl">
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-[#00FF7F] mb-3 sm:mb-4 lg:mb-6">
                   {category.category}
                 </h3>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3 lg:gap-4">
                   {category.items.map((item, itemIndex) => (
                     <div 
                       key={itemIndex}
-                      className="toolbox-item bg-[#0A0A0A] px-3 sm:px-4 py-2 sm:py-3 rounded-lg text-sm sm:text-base font-medium text-white cursor-default text-center"
+                      className="toolbox-item bg-[#0A0A0A] px-2 sm:px-3 lg:px-4 py-2 sm:py-3 rounded-lg text-xs sm:text-sm lg:text-base font-medium text-white cursor-default text-center"
                       style={{
                         willChange: 'transform, background-color, box-shadow',
                         transition: 'all 200ms ease-in-out',
@@ -506,12 +506,12 @@ function App() {
       </section>
 
       {/* Portfolio Section - Mobile Optimized */}
-      <section id="portfolio" className="min-h-screen flex items-center justify-center py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-[#0A0A0A]">
+      <section id="portfolio" className="min-h-screen flex items-center justify-center py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto w-full">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-16 sm:mb-20 text-center fade-in-up">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-12 sm:mb-16 lg:mb-20 text-center fade-in-up">
             Projects
           </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
             {portfolioProjects.map((project, index) => (
               <div key={index} className="fade-in-up card-hover">
                 <button 
@@ -536,9 +536,9 @@ function App() {
     }
   />
 </div>
-                  <div className="p-6 sm:p-8 flex-1 flex flex-col">
-                    <h3 className="text-xl sm:text-2xl font-semibold mb-3">{project.title}</h3>
-                    <p className="text-gray-400 mb-6 font-light flex-1 text-base sm:text-lg">{project.description}</p>
+                  <div className="p-4 sm:p-6 lg:p-8 flex-1 flex flex-col">
+                    <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3">{project.title}</h3>
+                    <p className="text-gray-400 mb-4 sm:mb-6 font-light flex-1 text-sm sm:text-base lg:text-lg">{project.description}</p>
                   </div>
                 </button>
               </div>
@@ -546,12 +546,12 @@ function App() {
           </div>
           
           {/* View All Projects Button */}
-          <div className="text-center mt-12 sm:mt-16 fade-in-up">
+          <div className="text-center mt-8 sm:mt-12 lg:mt-16 fade-in-up">
             <a 
               href="https://github.com/ahan-jain"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-3 bg-white hover:bg-[#015FFC] text-black hover:text-white px-8 sm:px-10 py-3 sm:py-4 rounded-xl font-bold transition-all duration-300 hover:scale-105 hover:shadow-xl text-base sm:text-lg"
+              className="inline-flex items-center space-x-2 sm:space-x-3 bg-white hover:bg-[#015FFC] text-black hover:text-white px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-xl font-bold transition-all duration-300 hover:scale-105 hover:shadow-xl text-sm sm:text-base lg:text-lg"
             >
               <span>View All Projects</span>
             </a>
@@ -610,12 +610,12 @@ function App() {
 </div>
 
             {/* Project Content */}
-            <div className="p-6 sm:p-8">
-              <h3 className="text-2xl sm:text-3xl font-semibold mb-4 text-white">
+            <div className="p-4 sm:p-6 lg:p-8">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-3 sm:mb-4 text-white">
                 {portfolioProjects[selectedProject].title}
               </h3>
               
-              <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-8">
+              <p className="text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8">
                 {portfolioProjects[selectedProject].fullDescription}
               </p>
 
@@ -625,7 +625,7 @@ function App() {
                   href={portfolioProjects[selectedProject].githubLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-white hover:bg-[#015FFC] text-black hover:text-white px-8 sm:px-10 py-3 sm:py-4 rounded-xl font-bold transition-all duration-300 hover:scale-105 hover:shadow-xl text-base sm:text-lg"
+                  className="bg-white hover:bg-[#015FFC] text-black hover:text-white px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-xl font-bold transition-all duration-300 hover:scale-105 hover:shadow-xl text-sm sm:text-base lg:text-lg"
                   onClick={(e) => e.stopPropagation()}
                 >
                   Open Repository
@@ -637,21 +637,21 @@ function App() {
       )}
 
       {/* Footer */}
-      <footer className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-t border-gray-800 bg-[#0A0A0A]">
+      <footer className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 border-t border-gray-800 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 font-light mb-6 md:mb-0 text-base sm:text-lg">
+            <p className="text-gray-400 font-light mb-4 sm:mb-6 md:mb-0 text-sm sm:text-base lg:text-lg">
               © Ahan Jain
             </p>
             
             {/* Footer Social Links */}
-            <div className="flex space-x-8">
+            <div className="flex space-x-6 sm:space-x-8">
               <a 
                 href="mailto:ahan@ahanjain.com,jain.aha@northeastern.edu"
                 className="text-gray-400 hover:text-[#00FF7F] transition-colors duration-300"
                 aria-label="Email"
               >
-                <Mail className="w-6 h-6 sm:w-7 sm:h-7" />
+                <Mail className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" />
               </a>
               <a 
                 href="https://github.com/ahan-jain"
@@ -660,7 +660,7 @@ function App() {
                 className="text-gray-400 hover:text-white transition-colors duration-300"
                 aria-label="GitHub"
               >
-                <Github className="w-6 h-6 sm:w-7 sm:h-7" />
+                <Github className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" />
               </a>
               <a 
                 href="https://linkedin.com/in/ahanjain"
@@ -669,7 +669,7 @@ function App() {
                 className="text-gray-400 hover:text-[#0077B5] transition-colors duration-300"
                 aria-label="LinkedIn"
               >
-                <Linkedin className="w-6 h-6 sm:w-7 sm:h-7" />
+                <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" />
               </a>
             </div>
           </div>
