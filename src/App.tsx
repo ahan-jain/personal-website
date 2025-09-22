@@ -252,24 +252,28 @@ function App() {
   const toolboxData = [
     {
       category: "Languages",
-      items: ["Python", "Java", "C", "SQL", "JavaScript", "R", "Racket"]
+      items: ["Python", "Java", "JavaScript", "TypeScript", "C", "SQL", "R", "Elixir", "Racket"]
     },
     {
-      category: "Web & Backend",
-      items: ["Node.js", "Express.js", "React", "HTML5", "CSS3"]
+      category: "Frontend",
+      items: ["React", "Angular", "HTML5", "CSS3"]
+    },
+    {
+      category: "Backend & APIs",
+      items: ["Spring Boot", "Flask", "Node.js", "Express.js", "RESTful APIs"]
     },
     {
       category: "Data Science & ML",
-      items: ["NumPy", "Pandas", "Matplotlib", "SciPy", "scikit-learn", "TensorFlow", "NLTK", "Keras"]
+      items: ["NumPy", "Pandas", "Matplotlib", "SciPy", "scikit-learn", "TensorFlow", "Keras", "NLTK"]
     },
     {
       category: "Databases",
       items: ["PostgreSQL"]
     },
     {
-      category: "Version Control & CI/CD",
-      items: ["GitHub", "Git"]
-    }
+      category: "Tools",
+      items: ["Git", "GitHub", "Docker"]
+    },
   ];
 
   const scrollToTop = () => {
@@ -294,8 +298,9 @@ function App() {
             AJ
           </button>
           <div className="hidden md:flex space-x-8">
-            <a href="#about" className="hover:text-[#015FFC] transition-colors duration-300">About</a>
+            <a href="#experience" className="hover:text-[#015FFC] transition-colors duration-300">Experience</a>
             <a href="#toolbox" className="hover:text-[#015FFC] transition-colors duration-300">Toolbox</a>
+            <a href="#about" className="hover:text-[#015FFC] transition-colors duration-300">About</a>
             <a href="#portfolio" className="hover:text-[#015FFC] transition-colors duration-300">Portfolio</a>
           </div>
         </div>
@@ -344,103 +349,103 @@ function App() {
             </div>
           </div>
           
-          {/* Navigable scroll arrow - points to about section */}
+          {/* Navigable scroll arrow - points to experience section */}
           <a 
-            href="#about" 
+            href="#experience" 
             className="scroll-arrow inline-block mt-4 sm:mt-8 text-white/60 hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer"
-            aria-label="Scroll to About section"
+            aria-label="Scroll to Experience section"
           >
             <ChevronDown className="w-8 h-8 sm:w-10 sm:h-10 mx-auto animate-bounce" />
           </a>
         </div>
       </section>
 
-      {/* Biography Section - Image Left, Text Right on Desktop */}
-      <section id="about" className="min-h-screen flex items-center justify-center py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-[#0A0A0A]">
+      {/* Experience Section */}
+      <section id="experience" className="min-h-screen flex items-center justify-center py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-[#111111] grain-texture scroll-mt-20">
         <div className="max-w-7xl mx-auto w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-stretch">
-            {/* Image - First on mobile, first on desktop */}
-            <div className="fade-in-up order-1">
-              <img 
-                src="/FullSizeRender.jpg" 
-                alt="Ahan Jain Portrait" 
-                className="w-full h-[60vh] sm:h-[70vh] lg:h-[80vh] max-h-[500px] sm:max-h-[600px] lg:max-h-[700px] object-cover rounded-lg hover-zoom shadow-2xl"
-              />
-            </div>
-            {/* Text - Second on mobile, second on desktop */}
-            <div className="fade-in-up order-2 h-full flex flex-col justify-center">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 sm:mb-8 lg:mb-10">About Me</h2>
-              <div className="space-y-4 sm:space-y-6 lg:space-y-8 text-base sm:text-lg lg:text-xl font-light leading-relaxed">
-                <p>
-                Junior CS student at Northeastern concentrating in AI, driven
-                  to build software that makes a real difference. I thrive on
-                  tackling challenges and bringing creative ideas to life.
-                </p>
-                <p>
-                  As a backend developer, I architect scalable APIs, build
-                  real-time data pipelines, and leverage machine-learning
-                  insights to drive smarter systems. Currently, I’m on co-op at
-                  Darby AI, a Boston-based health tech startup building
-                  AI-powered workflow automation for the healthcare industry,
-                  where I get to work on production systems that balance
-                  scalability, security, and real-world impact.
-                </p>
-                <p>
-                  Off the clock, you'll find me jamming with friends, diving
-                  into my favorite games, or exploring new backend tools. I’m
-                  passionate about turning difficult problems into elegant
-                  solutions and sharing my work with the developer community.
-                </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-16 sm:mb-20 text-center fade-in-up">
+            Experience
+          </h2>
+          
+          <div className="space-y-8 sm:space-y-12 lg:space-y-16">
+            {/* Darby AI Experience */}
+            <div className="fade-in-up">
+              <div className="bg-[#1a1a1a] rounded-xl p-6 sm:p-8 lg:p-10 border border-gray-800 shadow-xl hover:shadow-2xl transition-all duration-400">
+                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4 sm:mb-6">
+                  <div className="mb-4 lg:mb-0">
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#00FF7F] mb-2">
+                      Darby AI
+                    </h3>
+                    <p className="text-lg sm:text-xl text-gray-300 font-medium">
+                       Software Engineer Intern
+                    </p>
+                  </div>
+                  <div className="text-gray-400 text-sm sm:text-base lg:text-lg">
+                    July 2025 - December 2025
+                  </div>
+                </div>
+                <div className="space-y-3 sm:space-y-4 text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed">
+                  <p>• Developing production-grade microservices with Spring Boot, Angular, and SQL</p>
+                  <p>• Implementing JWT and header-based authentication with RESTful APIs for secure workflows</p>
+                  <p>• Building AI-driven document processing pipelines using LLM APIs to automate analysis and cut down review <span style={{ marginLeft: '0.9em' }}>time</span></p>
+                  <p>• Contributing to system architecture reviews with senior engineers to improve reliability and scalability</p>
+                </div>
               </div>
-              
-              {/* Social Links */}
-<div className="flex flex-col sm:flex-row sm:items-start sm:space-x-6 lg:space-x-8 mt-8 sm:mt-12 lg:mt-16">
-  <a
-    href="mailto:ahan@ahanjain.com,jain.aha@northeastern.edu"
-    className="flex items-center space-x-2 sm:space-x-3 text-gray-400 hover:text-[#00FF7F] transition-colors duration-300 mb-3 sm:mb-0"
-  >
-    <Mail className="w-5 h-5 flex-shrink-0" />
-    <span className="underline-animation">Email</span>
-  </a>
+            </div>
 
-  <a
-    href="https://linkedin.com/in/ahanjain"
-    className="flex items-center space-x-2 sm:space-x-3 text-gray-400 hover:text-[#0077B5] transition duration-300 mb-3 sm:mb-0"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <Linkedin className="w-5 h-5 flex-shrink-0"
-      style={{ transform: 'translateY(0px)' }}/>
-    <span className="linkedin-underline">LinkedIn</span>
-  </a>
+            {/* Oasis NEU Experience */}
+            <div className="fade-in-up">
+              <div className="bg-[#1a1a1a] rounded-xl p-6 sm:p-8 lg:p-10 border border-gray-800 shadow-xl hover:shadow-2xl transition-all duration-400">
+                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4 sm:mb-6">
+                  <div className="mb-4 lg:mb-0">
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#00FF7F] mb-2">
+                     Oasis NEU
+                    </h3>
+                    <p className="text-lg sm:text-xl text-gray-300 font-medium">
+                      Software Developer
+                    </p>
+                  </div>
+                  <div className="text-gray-400 text-sm sm:text-base lg:text-lg">
+                    January 2024 - April 2024
+                  </div>
+                </div>
+                <div className="space-y-3 sm:space-y-4 text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed">
+                  <p>• Built Husky Laundry, a web app serving real-time laundry machine updates to students across 20+ dorms</p>
+                  <p>• Wrote Python data-processing scripts that analyzed building-wide usage and improved resource allocation</p>
+                  <p>• Helped drive predictive maintenance insights through data analysis</p>
+                </div>
+              </div>
+            </div>
 
-  <a
-    href="https://github.com/ahan-jain"
-    className="flex items-center space-x-2 sm:space-x-3 text-gray-400 hover:text-white transition-colors duration-300 mb-3 sm:mb-0"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <Github className="w-5 h-5 flex-shrink-0" />
-    <span className="underline-animation">GitHub</span>
-  </a>
-
-  <a
-    href="/Ahan_Jain_Resume.pdf"
-    className="flex items-center space-x-2 sm:space-x-3 text-gray-400 hover:text-[#00FF7F] transition-colors duration-300"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <FileText className="w-5 h-5 flex-shrink-0" />
-    <span className="underline-animation">Resume</span>
-  </a>
-</div>
+            {/* Net Solutions Experience */}
+            <div className="fade-in-up">
+              <div className="bg-[#1a1a1a] rounded-xl p-6 sm:p-8 lg:p-10 border border-gray-800 shadow-xl hover:shadow-2xl transition-all duration-400">
+                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4 sm:mb-6">
+                  <div className="mb-4 lg:mb-0">
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#00FF7F] mb-2">
+                     Net Solutions
+                    </h3>
+                    <p className="text-lg sm:text-xl text-gray-300 font-medium">
+                     Software Engineer Intern
+                    </p>
+                  </div>
+                  <div className="text-gray-400 text-sm sm:text-base lg:text-lg">
+                    May 2021 - June 2021
+                  </div>
+                </div>
+                <div className="space-y-3 sm:space-y-4 text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed">
+                  <p>• Built a Flask-based web app integrated with the Spotify API for exploring artists and analyzing audio features</p>
+                  <p>• Designed dynamic Python backends with JSON endpoints for interactive song-level insights</p>
+                  <p>• Created visualizations of track data like tempo, energy, and other metrics</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* My Toolbox Section - Mobile Optimized */}
-      <section id="toolbox" className="min-h-screen flex items-center justify-center grain-texture px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 bg-[#111111]">
+      {/* Tech Stack Section - Mobile Optimized */}
+      <section id="toolbox" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 bg-[#0A0A0A] scroll-mt-20">
         <div className="max-w-7xl mx-auto w-full">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-16 sm:mb-20 text-center fade-in-up">
             My Toolbox
@@ -514,8 +519,85 @@ function App() {
         </div>
       </section>
 
+      {/* Biography Section - Image Left, Text Right on Desktop */}
+      <section id="about" className="min-h-screen flex items-center justify-center py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-[#111111] grain-texture scroll-mt-20">
+        <div className="max-w-7xl mx-auto w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-stretch">
+            {/* Image - First on mobile, first on desktop */}
+<div className="fade-in-up order-1 w-full">
+  <div className="aspect-[3/4] sm:aspect-auto sm:h-[500px] md:h-[600px] lg:h-[700px] w-full">
+    <img
+      src="/FullSizeRender.jpg"
+      alt="Ahan Jain Portrait"
+      className="w-full h-full object-cover object-center rounded-lg hover-zoom shadow-2xl"
+    />
+  </div>
+</div>
+            {/* Text - Second on mobile, second on desktop */}
+            <div className="fade-in-up order-2 h-full flex flex-col justify-center">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 sm:mb-8 lg:mb-10">About Me</h2>
+              <div className="space-y-4 sm:space-y-6 lg:space-y-8 text-base sm:text-lg lg:text-xl font-light leading-relaxed">
+                <p>
+                  CS & AI student at Northeastern University, driven to build software that makes a real difference. 
+                  I thrive on tackling complex challenges and bringing creative ideas to life.
+                </p>
+                <p>
+                As a software engineer, I architect scalable APIs, build real-time data pipelines, and leverage machine-learning insights to drive smarter systems. 
+                Off the clock, you'll find me jamming with friends, diving into my favorite games, or exploring new backend tools.
+                </p>
+                <p>
+                  I'm passionate about turning complex problems into elegant solutions and sharing my work with the developer community.
+                </p>
+              </div>
+              
+              {/* Social Links */}
+<div className="flex flex-col sm:flex-row sm:items-start sm:space-x-6 lg:space-x-8 mt-8 sm:mt-12 lg:mt-16">
+  <a
+    href="mailto:ahan@ahanjain.com,jain.aha@northeastern.edu"
+    className="flex items-center space-x-2 sm:space-x-3 text-gray-400 hover:text-[#00FF7F] transition-colors duration-300 mb-3 sm:mb-0"
+  >
+    <Mail className="w-5 h-5 flex-shrink-0" />
+    <span className="underline-animation">Email</span>
+  </a>
+
+  <a
+    href="https://linkedin.com/in/ahanjain"
+    className="flex items-center space-x-2 sm:space-x-3 text-gray-400 hover:text-[#0077B5] transition duration-300 mb-3 sm:mb-0"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Linkedin className="w-5 h-5 flex-shrink-0"
+      style={{ transform: 'translateY(0px)' }}/>
+    <span className="linkedin-underline">LinkedIn</span>
+  </a>
+
+  <a
+    href="https://github.com/ahan-jain"
+    className="flex items-center space-x-2 sm:space-x-3 text-gray-400 hover:text-white transition-colors duration-300 mb-3 sm:mb-0"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Github className="w-5 h-5 flex-shrink-0" />
+    <span className="underline-animation">GitHub</span>
+  </a>
+
+  <a
+    href="/Ahan_Jain_Resume.pdf"
+    className="flex items-center space-x-2 sm:space-x-3 text-gray-400 hover:text-[#00FF7F] transition-colors duration-300"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <FileText className="w-5 h-5 flex-shrink-0" />
+    <span className="underline-animation">Resume</span>
+  </a>
+</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Portfolio Section - Mobile Optimized */}
-      <section id="portfolio" className="min-h-screen flex items-center justify-center py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-[#0A0A0A]">
+      <section id="portfolio" className="min-h-screen flex items-center justify-center py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-[#0A0A0A] scroll-mt-20">
         <div className="max-w-7xl mx-auto w-full">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-12 sm:mb-16 lg:mb-20 text-center fade-in-up">
             Projects
@@ -535,7 +617,7 @@ function App() {
       project.title === "Husky Laundry" 
         ? "object-cover object-top scale-100" 
         : project.title === "Three Trios"
-        ? "object-cover scale-100"      // we’ll override its position via style
+        ? "object-cover scale-100"      // we'll override its position via style
         : "object-fill"
     }`}
     style={
