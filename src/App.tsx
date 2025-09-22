@@ -21,7 +21,7 @@ function App() {
   const targetTextRef = useRef('');
 
   const typingPhrases = [
-    "a Software Engineer @ Darby",
+    "a Software Engineer @ Darby AI",
     "a CS & AI Major @ Northeastern University",
     "a Pianist, Drummer, Guitarist and Vocalist",
     "a Backend Developer",
