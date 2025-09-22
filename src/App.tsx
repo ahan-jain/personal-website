@@ -21,8 +21,8 @@ function App() {
   const targetTextRef = useRef('');
 
   const typingPhrases = [
-    "a CS & AI Major @ Northeastern University",
     "a Software Engineer @ Darby",
+    "a CS & AI Major @ Northeastern University",
     "a Pianist, Drummer, Guitarist and Vocalist",
     "a Backend Developer",
     "an AI & ML enthusiast",
@@ -372,15 +372,24 @@ function App() {
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 sm:mb-8 lg:mb-10">About Me</h2>
               <div className="space-y-4 sm:space-y-6 lg:space-y-8 text-base sm:text-lg lg:text-xl font-light leading-relaxed">
                 <p>
-                  Junior CS student at Northeastern concentrating in AI, driven to build software that makes a real difference. 
-                  I thrive on tackling complex challenges and bringing creative ideas to life.
+                Junior CS student at Northeastern concentrating in AI, driven
+                  to build software that makes a real difference. I thrive on
+                  tackling challenges and bringing creative ideas to life.
                 </p>
                 <p>
-                As a backend developer, I architect scalable APIs, build real-time data pipelines, and leverage machine-learning insights to drive smarter systems. 
-                Off the clock, you'll find me jamming with friends, diving into my favorite games, or exploring new backend tools.
+                  As a backend developer, I architect scalable APIs, build
+                  real-time data pipelines, and leverage machine-learning
+                  insights to drive smarter systems. Currently, I’m on co-op at
+                  Darby AI, a Boston-based health tech startup building
+                  AI-powered workflow automation for the healthcare industry,
+                  where I get to work on production systems that balance
+                  scalability, security, and real-world impact.
                 </p>
                 <p>
-                  I'm passionate about turning complex problems into elegant solutions and sharing my work with the developer community.
+                  Off the clock, you'll find me jamming with friends, diving
+                  into my favorite games, or exploring new backend tools. I’m
+                  passionate about turning difficult problems into elegant
+                  solutions and sharing my work with the developer community.
                 </p>
               </div>
               
