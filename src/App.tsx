@@ -289,7 +289,7 @@ function App() {
       <nav className={`fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 py-4 sm:py-6 transition-all duration-400 ${
         isNavbarSolid ? 'navbar-solid' : 'bg-transparent'
       }`}>
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
+        <div className="w-full flex justify-between items-center">
           <button 
             onClick={scrollToTop}
             className="text-xl font-semibold text-white hover:text-[#015FFC] transition-colors duration-300 cursor-pointer"
