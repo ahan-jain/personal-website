@@ -374,7 +374,7 @@ function App() {
                 <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4 sm:mb-6">
                   <div className="mb-4 lg:mb-0">
                     <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#00FF7F] mb-2">
-                      Darby AI
+                      Darby
                     </h3>
                     <p className="text-lg sm:text-xl text-gray-300 font-medium">
                        Software Engineer Intern
@@ -385,10 +385,14 @@ function App() {
                   </div>
                 </div>
                 <div className="space-y-3 sm:space-y-4 text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed">
-                  <p>• Developing production-grade microservices with Spring Boot, Angular, and SQL</p>
-                  <p>• Implementing JWT and header-based authentication with RESTful APIs for secure workflows</p>
-                  <p>• Building AI-driven document processing pipelines using LLM APIs to automate analysis and cut down review <span style={{ marginLeft: '0.9em' }}>time</span></p>
-                  <p>• Contributing to system architecture reviews with senior engineers to improve reliability and scalability</p>
+                  <p>• Engineered production microservices using Spring Boot, Node.js, SQL, and containerized deployments to support Medicare coverage lookup, internal analytics, and customer-facing workflows</p>
+                  <p>• Built secure authentication layers using JWT, refresh-token rotation, and header-validated API access across distributed services</p>
+                  <p>• Developed AI-assisted document automation features using LLM APIs, OCR, and structured extraction to accelerate high-volume healthcare PDF processing</p>
+                  <p>• Designed backend components behind a real-time admin analytics platform used across 15+ organizations to surface usage insights, customer health scoring, and expansion signals</p>
+                  <p>• Contributed to architecture reviews, schema design, and performance tuning efforts to improve system reliability, latency, and long-term scalability</p>
+                </div>
+                <div className="mt-4 sm:mt-6 text-gray-400 text-xs sm:text-sm italic">
+                  Additional detailed technical material available upon request due to NDA constraints.
                 </div>
               </div>
             </div>
@@ -410,9 +414,9 @@ function App() {
                   </div>
                 </div>
                 <div className="space-y-3 sm:space-y-4 text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed">
-                  <p>• Built Husky Laundry, a web app serving real-time laundry machine updates to students across 20+ dorms</p>
-                  <p>• Wrote Python data-processing scripts that analyzed building-wide usage and improved resource allocation</p>
-                  <p>• Helped drive predictive maintenance insights through data analysis</p>
+                  <p>• Co-developed Husky Laundry, a real-time web platform delivering live machine availability to students across 20+ dorms, improving transparency and reducing wait times during peak hours</p>
+                  <p>• Built Python-based data pipelines that ingested and aggregated machine telemetry, enabling usage trend analysis and data-informed resource planning for residence halls</p>
+                  <p>• Generated insights from historical usage patterns that supported early predictive maintenance discussions and operational improvements</p>
                 </div>
               </div>
             </div>
@@ -434,9 +438,9 @@ function App() {
                   </div>
                 </div>
                 <div className="space-y-3 sm:space-y-4 text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed">
-                  <p>• Built a Flask-based web app integrated with the Spotify API for exploring artists and analyzing audio features</p>
-                  <p>• Designed dynamic Python backends with JSON endpoints for interactive song-level insights</p>
-                  <p>• Created visualizations of track data like tempo, energy, and other metrics</p>
+                  <p>• Built a small Flask web app that let users search artists and browse albums and tracks using the Spotify API</p>
+                  <p>• Implemented Python backend routes and Spotipy calls for artist lookup, album listing, and track metadata retrieval</p>
+                  <p>• Structured API results into clean dictionaries for template rendering and a straightforward browsing experience</p>
                 </div>
               </div>
             </div>
