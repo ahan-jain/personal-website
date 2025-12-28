@@ -13,7 +13,7 @@ function App() {
   const [isClosing, setIsClosing] = useState(false);
   
   // Refs for fixed time-interval typewriter
-  const animationRef = useRef();
+  const animationRef = useRef<number>();
   const lastUpdateTimeRef = useRef(0);
   const accumulatedTimeRef = useRef(0);
   const isAnimatingRef = useRef(false);
@@ -140,7 +140,7 @@ function App() {
     const TARGET_FPS = 120; // 120fps for smooth updates
     const FRAME_INTERVAL = 1000 / TARGET_FPS; // ~8.33ms per frame
 
-    const animate = (timestamp) => {
+    const animate = (timestamp: number) => {
       if (!lastUpdateTimeRef.current) {
         lastUpdateTimeRef.current = timestamp;
       }
@@ -224,11 +224,11 @@ function App() {
 
   const portfolioProjects = [
     {
-      title: "Husky Laundry",
-      description: "Real-time laundry monitoring web app",
-      fullDescription: "Real-time laundry monitoring web app that tracks machine availability across Northeastern dorms, computes live usage stats, and delivers predictive insights to help students minimize wait times.",
-      image: "/laundry.png",
-      githubLink: "https://github.com/Oasis-NEU/s24-group9/tree/main/husky-laundry",
+      title: "InsightHub",
+      description: "AI-Powered Field Intelligence Platform",
+      fullDescription: "Multi-model computer vision system using 5 specialized YOLO detectors to automate safety compliance monitoring in construction and industrial environments, achieving 85-90% accuracy in detecting PPE violations, infrastructure damage, and emergency hazards with offline-first capabilities and automated reporting.",
+      image: "/insighthub.png",
+      githubLink: "https://github.com/ahan-jain/insighthub",
       liveLink: null
     },
     {
@@ -237,6 +237,14 @@ function App() {
       fullDescription: "Dynamic two-player Java MVC card duel where each strategic placement triggers cascading flips across the grid, pitting Team Red vs. Team Blue in a battle for territorial domination.",
       image: "/midgame_final.png",
       githubLink: "https://github.com/ahan-jain/NEU-Projects/tree/main/Java%20Projects/Three%20Trios",
+      liveLink: null
+    },
+    {
+      title: "Husky Laundry",
+      description: "Real-time laundry machine availability tracker",
+      fullDescription: "Real-time web platform delivering live machine availability to students across 20+ dorms, improving transparency and reducing wait times during peak hours. Built with Python data pipelines for machine telemetry aggregation and usage trend analysis.",
+      image: "/laundry.png",
+      githubLink: "https://github.com/ahan-jain/husky-laundry",
       liveLink: null
     },
     {
@@ -256,24 +264,24 @@ function App() {
     },
     {
       category: "Frontend",
-      items: ["React", "Angular", "HTML5", "CSS3"]
+      items: ["React", "Angular", "HTML5", "CSS3", "Next.js"]
     },
     {
       category: "Backend & APIs",
-      items: ["Spring Boot", "Flask", "Node.js", "Express.js", "RESTful APIs"]
+      items: ["Spring Boot", "Flask", "Node.js", "Express.js", "RESTful APIs", "FastAPI"]
     },
     {
       category: "Data Science & ML",
-      items: ["NumPy", "Pandas", "Matplotlib", "SciPy", "scikit-learn", "TensorFlow", "Keras", "NLTK"]
+      items: ["NumPy", "Pandas", "Matplotlib", "SciPy", "scikit-learn", "TensorFlow", "Keras", "NLTK", "Ultralytics YOLO", "Recharts", "ReportLab"]
     },
     {
       category: "Databases",
-      items: ["PostgreSQL"]
+      items: ["PostgreSQL", "IndexedDB"]
     },
     {
       category: "Tools",
-      items: ["Git", "GitHub", "Docker"]
-    },
+      items: ["Git", "GitHub", "Docker", "VS Code", "Jupyter Notebook", "IntelliJ", "Redis", "Claude API", "OpenAI API"]
+    }
   ];
 
   const scrollToTop = () => {
@@ -528,15 +536,15 @@ function App() {
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-stretch">
             {/* Image - First on mobile, first on desktop */}
-<div className="fade-in-up order-1 w-full">
-  <div className="aspect-[3/4] sm:aspect-auto sm:h-[500px] md:h-[600px] lg:h-[700px] w-full">
-    <img
-      src="/FullSizeRender.jpg"
-      alt="Ahan Jain Portrait"
-      className="w-full h-full object-cover object-center rounded-lg hover-zoom shadow-2xl"
-    />
-  </div>
-</div>
+            <div className="fade-in-up order-1 w-full">
+              <div className="aspect-[3/4] sm:aspect-auto sm:h-[500px] md:h-[600px] lg:h-[700px] w-full">
+                <img
+                  src="/FullSizeRender.jpg"
+                  alt="Ahan Jain Portrait"
+                  className="w-full h-full object-cover object-center rounded-lg hover-zoom shadow-2xl"
+                />
+              </div>
+            </div>
             {/* Text - Second on mobile, second on desktop */}
             <div className="fade-in-up order-2 h-full flex flex-col justify-center">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 sm:mb-8 lg:mb-10">About Me</h2>
@@ -555,46 +563,46 @@ function App() {
               </div>
               
               {/* Social Links */}
-<div className="flex flex-col sm:flex-row sm:items-start sm:space-x-6 lg:space-x-8 mt-8 sm:mt-12 lg:mt-16">
-  <a
-    href="mailto:ahan@ahanjain.com,jain.aha@northeastern.edu"
-    className="flex items-center space-x-2 sm:space-x-3 text-gray-400 hover:text-[#00FF7F] transition-colors duration-300 mb-3 sm:mb-0"
-  >
-    <Mail className="w-5 h-5 flex-shrink-0" />
-    <span className="underline-animation">Email</span>
-  </a>
+              <div className="flex flex-col sm:flex-row sm:items-start sm:space-x-6 lg:space-x-8 mt-8 sm:mt-12 lg:mt-16">
+                <a
+                  href="mailto:ahan@ahanjain.com,jain.aha@northeastern.edu"
+                  className="flex items-center space-x-2 sm:space-x-3 text-gray-400 hover:text-[#00FF7F] transition-colors duration-300 mb-3 sm:mb-0"
+                >
+                  <Mail className="w-5 h-5 flex-shrink-0" />
+                  <span className="underline-animation">Email</span>
+                </a>
 
-  <a
-    href="https://linkedin.com/in/ahanjain"
-    className="flex items-center space-x-2 sm:space-x-3 text-gray-400 hover:text-[#0077B5] transition duration-300 mb-3 sm:mb-0"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <Linkedin className="w-5 h-5 flex-shrink-0"
-      style={{ transform: 'translateY(0px)' }}/>
-    <span className="linkedin-underline">LinkedIn</span>
-  </a>
+                <a
+                  href="https://linkedin.com/in/ahanjain"
+                  className="flex items-center space-x-2 sm:space-x-3 text-gray-400 hover:text-[#0077B5] transition duration-300 mb-3 sm:mb-0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Linkedin className="w-5 h-5 flex-shrink-0"
+                    style={{ transform: 'translateY(0px)' }}/>
+                  <span className="linkedin-underline">LinkedIn</span>
+                </a>
 
-  <a
-    href="https://github.com/ahan-jain"
-    className="flex items-center space-x-2 sm:space-x-3 text-gray-400 hover:text-white transition-colors duration-300 mb-3 sm:mb-0"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <Github className="w-5 h-5 flex-shrink-0" />
-    <span className="underline-animation">GitHub</span>
-  </a>
+                <a
+                  href="https://github.com/ahan-jain"
+                  className="flex items-center space-x-2 sm:space-x-3 text-gray-400 hover:text-white transition-colors duration-300 mb-3 sm:mb-0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github className="w-5 h-5 flex-shrink-0" />
+                  <span className="underline-animation">GitHub</span>
+                </a>
 
-  <a
-    href="/Ahan_Jain_Resume.pdf"
-    className="flex items-center space-x-2 sm:space-x-3 text-gray-400 hover:text-[#00FF7F] transition-colors duration-300"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <FileText className="w-5 h-5 flex-shrink-0" />
-    <span className="underline-animation">Resume</span>
-  </a>
-</div>
+                <a
+                  href="/Ahan_Jain_Resume.pdf"
+                  className="flex items-center space-x-2 sm:space-x-3 text-gray-400 hover:text-[#00FF7F] transition-colors duration-300"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FileText className="w-5 h-5 flex-shrink-0" />
+                  <span className="underline-animation">Resume</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -613,24 +621,28 @@ function App() {
                   onClick={() => openModal(index)}
                   className="block bg-[#1a1a1a] rounded-xl overflow-hidden group h-full flex flex-col cursor-pointer shadow-xl w-full text-left border border-[#1a1a1a] transition-all duration-400 focus:outline-none focus:ring-0"
                 >
-                  <div className="aspect-video overflow-hidden">
-  <img 
-    src={project.image} 
-    alt={project.title}
-    className={`w-full h-full transition-all duration-400 grayscale group-hover:grayscale-0 ${
-      project.title === "Husky Laundry" 
-        ? "object-cover object-top scale-100" 
-        : project.title === "Three Trios"
-        ? "object-cover scale-100"      // we'll override its position via style
-        : "object-fill"
-    }`}
-    style={
-      project.title === "Three Trios"
-        ? { objectPosition: '2% 2%' }  // ← tweak these X% Y% until you frame your desired region
-        : undefined
-    }
-  />
-</div>
+                  <div className="overflow-hidden aspect-video">
+                      <img 
+                        src={project.image} 
+                        alt={project.title}
+                        className={`w-full h-full transition-all duration-400 grayscale group-hover:grayscale-0 ${
+                          project.title === "Husky Laundry" 
+                            ? "object-cover object-top scale-100" 
+                            : project.title === "Three Trios"
+                            ? "object-cover scale-100"
+                            : project.title === "InsightHub"
+                            ? "object-cover scale-100"
+                            : "object-fill"
+                        }`}
+                        style={
+                          project.title === "Three Trios"
+                            ? { objectPosition: '2% 2%' }
+                            : project.title === "InsightHub"
+                           ? { objectFit: 'cover', objectPosition: 'center 5%' }
+                            : {}
+                        }
+                      />
+                  </div>
                   <div className="p-4 sm:p-6 lg:p-8 flex-1 flex flex-col">
                     <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3">{project.title}</h3>
                     <p className="text-gray-400 mb-4 sm:mb-6 font-light flex-1 text-sm sm:text-base lg:text-lg">{project.description}</p>
@@ -685,24 +697,27 @@ function App() {
               <X className="w-5 h-5" />
             </button>
 
-{/* Project Image */}
-<div className="aspect-video overflow-hidden rounded-t-xl">
-  <img
-    src={portfolioProjects[selectedProject].image}
-    alt={portfolioProjects[selectedProject].title}
-    className="w-full h-full transition-all duration-300"
-    style={
-      portfolioProjects[selectedProject].title === "Husky Laundry"
-        // keep your existing Husky Laundry framing
-        ? { objectFit: 'cover', objectPosition: 'center top' }
-        : portfolioProjects[selectedProject].title === "Three Trios"
-        // now match the same crop you used on the tile
-        ? { objectFit: 'cover', objectPosition: '2% 2%' }
-        // all others just center‐cover
-        : { objectFit: 'cover', objectPosition: 'center center' }
-    }
-  />
-</div>
+            {/* Project Image */}
+            <div className="aspect-video overflow-hidden rounded-t-xl">
+              <img
+                src={portfolioProjects[selectedProject].image}
+                alt={portfolioProjects[selectedProject].title}
+                className="w-full h-full transition-all duration-300"
+                style={
+                  portfolioProjects[selectedProject].title === "Husky Laundry"
+                    // keep your existing Husky Laundry framing
+                    ? { objectFit: 'cover', objectPosition: 'center top' }
+                    : portfolioProjects[selectedProject].title === "Three Trios"
+                    // now match the same crop you used on the tile
+                    ? { objectFit: 'cover', objectPosition: '2% 2%' }
+                    : portfolioProjects[selectedProject].title === "InsightHub"
+                    // center the complete detection interface view
+                   ? { objectFit: 'cover', objectPosition: 'center 20%' }
+                    // all others just center‐cover
+                    : { objectFit: 'cover', objectPosition: 'center center' }
+                }
+              />
+            </div>
 
             {/* Project Content */}
             <div className="p-4 sm:p-6 lg:p-8">
@@ -772,7 +787,7 @@ function App() {
       </footer>
 
       {/* Enhanced CSS for Smooth Toolbox Hover Animations + Custom LinkedIn Underline */}
-      <style jsx>{`
+      <style>{`
         .toolbox-item:hover {
           background-color: #015FFC !important;
           color: white !important;
