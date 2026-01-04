@@ -385,7 +385,7 @@ function App() {
                       Darby
                     </h3>
                     <p className="text-lg sm:text-xl text-gray-300 font-medium">
-                       Software Engineer Intern
+                       AI Engineer Co-op
                     </p>
                   </div>
                   <div className="text-gray-400 text-sm sm:text-base lg:text-lg">
