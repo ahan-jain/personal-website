@@ -224,6 +224,14 @@ function App() {
 
   const portfolioProjects = [
     {
+      title: "OpsPilot",
+      description: "Autonomous Agent with Model Context Protocol Integration",
+      fullDescription: "Autonomous operations agent with Model Context Protocol integration that handles multi-step operational workflows through natural language, featuring explicit state machine architecture (Plan→Execute→Evaluate), approval workflows for high-risk operations, and comprehensive audit logging for debugging AI decision-making in production systems.",
+      image: "/opspilot.png",
+      githubLink: "https://github.com/ahan-jain/opspilot",
+      liveLink: null
+    },
+    {
       title: "InsightHub",
       description: "AI-Powered Field Intelligence Platform",
       fullDescription: "Multi-model computer vision system using 5 specialized YOLO detectors to automate safety compliance monitoring in construction and industrial environments, achieving 85-90% accuracy in detecting PPE violations, infrastructure damage, and emergency hazards with offline-first capabilities and automated reporting.",
@@ -276,7 +284,7 @@ function App() {
     },
     {
       category: "Databases",
-      items: ["PostgreSQL", "IndexedDB"]
+      items: ["PostgreSQL", "SQLite", "IndexedDB"]
     },
     {
       category: "Tools",
@@ -639,6 +647,8 @@ function App() {
                             ? { objectPosition: '2% 2%' }
                             : project.title === "InsightHub"
                            ? { objectFit: 'cover', objectPosition: 'center 5%' }
+                           : project.title === "OpsPilot"
+                           ? { objectFit: 'cover', objectPosition: 'center 5%' }
                             : {}
                         }
                       />
@@ -713,6 +723,9 @@ function App() {
                     : portfolioProjects[selectedProject].title === "InsightHub"
                     // center the complete detection interface view
                    ? { objectFit: 'cover', objectPosition: 'center 20%' }
+                   : portfolioProjects[selectedProject].title === "OpsPilot"
+                   // shift slightly down to better frame the content
+                   ? { objectFit: 'cover', objectPosition: 'center 5%' }
                     // all others just center‐cover
                     : { objectFit: 'cover', objectPosition: 'center center' }
                 }
