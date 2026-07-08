@@ -1,33 +1,41 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { ChevronDown, ExternalLink, Mail, Linkedin, Github, FileText, X } from 'lucide-react';
-import Particles from './components/Particles';
+import React, { useState, useEffect, useRef } from "react";
+import {
+  ChevronDown,
+  ExternalLink,
+  Mail,
+  Linkedin,
+  Github,
+  FileText,
+  X,
+} from "lucide-react";
+import Particles from "./components/Particles";
 
 function App() {
   const [isNavbarSolid, setIsNavbarSolid] = useState(false);
-  const [currentText, setCurrentText] = useState('');
+  const [currentText, setCurrentText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [showCursor, setShowCursor] = useState(true);
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [isModalAnimating, setIsModalAnimating] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
-  
+
   // Refs for fixed time-interval typewriter
   const animationRef = useRef<number>();
   const lastUpdateTimeRef = useRef(0);
   const accumulatedTimeRef = useRef(0);
   const isAnimatingRef = useRef(false);
   const pauseStartRef = useRef(0);
-  const targetTextRef = useRef('');
+  const targetTextRef = useRef("");
 
   const typingPhrases = [
     "a CS & AI Major @ Northeastern University",
-    "an Incoming App Dev Co-op @ General Atlantic",
+    "an App Dev Co-op @ General Atlantic",
     "an Ex-AI Engineer @ Darby",
     "a Pianist, Drummer, Guitarist and Vocalist",
     "a Backend Developer",
     "an AI & ML enthusiast",
-    "a Soccer Aficionado"
+    "a Soccer Aficionado",
   ];
 
   // Scroll to top on page load/refresh
@@ -40,25 +48,25 @@ function App() {
       setIsNavbarSolid(window.scrollY > 100);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+      rootMargin: "0px 0px -50px 0px",
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          entry.target.classList.add("visible");
         }
       });
     }, observerOptions);
 
-    const elements = document.querySelectorAll('.fade-in-up');
+    const elements = document.querySelectorAll(".fade-in-up");
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
@@ -69,7 +77,7 @@ function App() {
     setSelectedProject(index);
     setIsClosing(false);
     setIsModalAnimating(false);
-    
+
     // Trigger fade-in animation
     requestAnimationFrame(() => {
       setIsModalAnimating(true);
@@ -79,7 +87,7 @@ function App() {
   const closeModal = () => {
     setIsClosing(true);
     setIsModalAnimating(false);
-    
+
     // Wait for fade-out animation to complete
     setTimeout(() => {
       setSelectedProject(null);
@@ -97,7 +105,17 @@ function App() {
 
       // Prevent keyboard scrolling (arrow keys, space, page up/down)
       const preventKeyScroll = (e: KeyboardEvent) => {
-        const scrollKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Space', 'PageUp', 'PageDown', 'Home', 'End'];
+        const scrollKeys = [
+          "ArrowUp",
+          "ArrowDown",
+          "ArrowLeft",
+          "ArrowRight",
+          "Space",
+          "PageUp",
+          "PageDown",
+          "Home",
+          "End",
+        ];
         if (scrollKeys.includes(e.code)) {
           e.preventDefault();
         }
@@ -109,14 +127,16 @@ function App() {
         e.preventDefault();
       };
 
-      document.addEventListener('wheel', preventScroll, { passive: false });
-      document.addEventListener('keydown', preventKeyScroll);
-      document.addEventListener('touchmove', preventTouchScroll, { passive: false });
+      document.addEventListener("wheel", preventScroll, { passive: false });
+      document.addEventListener("keydown", preventKeyScroll);
+      document.addEventListener("touchmove", preventTouchScroll, {
+        passive: false,
+      });
 
       return () => {
-        document.removeEventListener('wheel', preventScroll);
-        document.removeEventListener('keydown', preventKeyScroll);
-        document.removeEventListener('touchmove', preventTouchScroll);
+        document.removeEventListener("wheel", preventScroll);
+        document.removeEventListener("keydown", preventKeyScroll);
+        document.removeEventListener("touchmove", preventTouchScroll);
       };
     }
   }, [selectedProject]);
@@ -124,13 +144,13 @@ function App() {
   // Handle escape key to close modal
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && selectedProject !== null) {
+      if (e.key === "Escape" && selectedProject !== null) {
         closeModal();
       }
     };
 
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
   }, [selectedProject]);
 
   // Fixed time-interval typewriter with 120fps updates
@@ -147,42 +167,53 @@ function App() {
       }
 
       const deltaTime = timestamp - lastUpdateTimeRef.current;
-      
+
       // Only process if enough time has passed for our target FPS
       if (deltaTime >= FRAME_INTERVAL) {
         const targetPhrase = typingPhrases[currentIndex];
-        
+
         // Initialize animation state
         if (!isAnimatingRef.current) {
-          targetTextRef.current = isDeleting ? '' : targetPhrase;
+          targetTextRef.current = isDeleting ? "" : targetPhrase;
           isAnimatingRef.current = true;
           pauseStartRef.current = 0;
           accumulatedTimeRef.current = 0;
         }
 
         // Handle pause before deleting
-        if (!isDeleting && currentText === targetPhrase && !pauseStartRef.current) {
+        if (
+          !isDeleting &&
+          currentText === targetPhrase &&
+          !pauseStartRef.current
+        ) {
           pauseStartRef.current = timestamp;
         }
 
-        if (pauseStartRef.current && timestamp - pauseStartRef.current >= PAUSE_DURATION) {
+        if (
+          pauseStartRef.current &&
+          timestamp - pauseStartRef.current >= PAUSE_DURATION
+        ) {
           setIsDeleting(true);
           isAnimatingRef.current = false;
           pauseStartRef.current = 0;
         } else if (!pauseStartRef.current) {
           // Accumulate time for character intervals
           accumulatedTimeRef.current += deltaTime;
-          
-          const charInterval = isDeleting ? CHAR_INTERVAL_DELETING : CHAR_INTERVAL_TYPING;
-          
+
+          const charInterval = isDeleting
+            ? CHAR_INTERVAL_DELETING
+            : CHAR_INTERVAL_TYPING;
+
           // Only emit one character per interval, regardless of frame drops
           if (accumulatedTimeRef.current >= charInterval) {
-            const intervalsToProcess = Math.floor(accumulatedTimeRef.current / charInterval);
-            
+            const intervalsToProcess = Math.floor(
+              accumulatedTimeRef.current / charInterval,
+            );
+
             // Process exactly one character interval
             if (isDeleting) {
               if (currentText.length > 0) {
-                setCurrentText(prev => prev.slice(0, -1));
+                setCurrentText((prev) => prev.slice(0, -1));
               } else {
                 setIsDeleting(false);
                 setCurrentIndex((prev) => (prev + 1) % typingPhrases.length);
@@ -193,7 +224,7 @@ function App() {
                 setCurrentText(targetPhrase.slice(0, currentText.length + 1));
               }
             }
-            
+
             // Subtract only one interval, carry over leftover time
             accumulatedTimeRef.current -= charInterval;
           }
@@ -217,7 +248,7 @@ function App() {
   // Terminal cursor blinking effect
   useEffect(() => {
     const cursorInterval = setInterval(() => {
-      setShowCursor(prev => !prev);
+      setShowCursor((prev) => !prev);
     }, 530);
 
     return () => clearInterval(cursorInterval);
@@ -227,87 +258,135 @@ function App() {
     {
       title: "OpsPilot",
       description: "Autonomous Agent with Model Context Protocol Integration",
-      fullDescription: "Autonomous operations agent with Model Context Protocol integration that handles multi-step operational workflows through natural language, featuring explicit state machine architecture (Plan→Execute→Evaluate), approval workflows for high-risk operations, and comprehensive audit logging for debugging AI decision-making in production systems.",
+      fullDescription:
+        "Autonomous operations agent with Model Context Protocol integration that handles multi-step operational workflows through natural language, featuring explicit state machine architecture (Plan→Execute→Evaluate), approval workflows for high-risk operations, and comprehensive audit logging for debugging AI decision-making in production systems.",
       image: "/opspilot.png",
       githubLink: "https://github.com/ahan-jain/opspilot",
-      liveLink: null
+      liveLink: null,
     },
     {
       title: "InsightHub",
       description: "AI-Powered Field Intelligence Platform",
-      fullDescription: "Multi-model computer vision system using 5 specialized YOLO detectors to automate safety compliance monitoring in construction and industrial environments, achieving 85-90% accuracy in detecting PPE violations, infrastructure damage, and emergency hazards with offline-first capabilities and automated reporting.",
+      fullDescription:
+        "Multi-model computer vision system using 5 specialized YOLO detectors to automate safety compliance monitoring in construction and industrial environments, achieving 85-90% accuracy in detecting PPE violations, infrastructure damage, and emergency hazards with offline-first capabilities and automated reporting.",
       image: "/insighthub.png",
       githubLink: "https://github.com/ahan-jain/insighthub",
-      liveLink: null
+      liveLink: null,
     },
     {
       title: "Three Trios",
       description: "Dynamic two-player Java MVC card duel",
-      fullDescription: "Dynamic two-player Java MVC card duel where each strategic placement triggers cascading flips across the grid, pitting Team Red vs. Team Blue in a battle for territorial domination.",
+      fullDescription:
+        "Dynamic two-player Java MVC card duel where each strategic placement triggers cascading flips across the grid, pitting Team Red vs. Team Blue in a battle for territorial domination.",
       image: "/midgame_final.png",
-      githubLink: "https://github.com/ahan-jain/NEU-Projects/tree/main/Java%20Projects/Three%20Trios",
-      liveLink: null
+      githubLink:
+        "https://github.com/ahan-jain/NEU-Projects/tree/main/Java%20Projects/Three%20Trios",
+      liveLink: null,
     },
     {
       title: "Husky Laundry",
       description: "Real-time laundry machine availability tracker",
-      fullDescription: "Real-time web platform delivering live machine availability to students across 20+ dorms, improving transparency and reducing wait times during peak hours. Built with Python data pipelines for machine telemetry aggregation and usage trend analysis.",
+      fullDescription:
+        "Real-time web platform delivering live machine availability to students across 20+ dorms, improving transparency and reducing wait times during peak hours. Built with Python data pipelines for machine telemetry aggregation and usage trend analysis.",
       image: "/laundry.png",
       githubLink: "https://github.com/ahan-jain/husky-laundry",
-      liveLink: null
+      liveLink: null,
     },
     {
       title: "Next-Word Predictor",
       description: "LSTM neural sequence-learning model",
-      fullDescription: "LSTM model trained on a \"fake-news\" dataset that can predict the next word in a sequence or generate paragraphs from a seed phrase, showcasing core neural sequence-learning capabilities.",
+      fullDescription:
+        'LSTM model trained on a "fake-news" dataset that can predict the next word in a sequence or generate paragraphs from a seed phrase, showcasing core neural sequence-learning capabilities.',
       image: "/neural_network_prediction.jpg",
-      githubLink: "https://github.com/ahan-jain/Neural-Text-Generation/tree/main",
-      liveLink: null
-    }
+      githubLink:
+        "https://github.com/ahan-jain/Neural-Text-Generation/tree/main",
+      liveLink: null,
+    },
   ];
 
   const toolboxData = [
     {
       category: "Languages",
-      items: ["Python", "Java", "JavaScript", "TypeScript", "C", "SQL", "R", "Elixir", "Racket"]
+      items: [
+        "Python",
+        "Java",
+        "JavaScript",
+        "TypeScript",
+        "C",
+        "SQL",
+        "R",
+        "Elixir",
+        "Racket",
+      ],
     },
     {
       category: "Frontend",
-      items: ["React", "Angular", "HTML5", "CSS3", "Next.js"]
+      items: ["React", "Angular", "HTML5", "CSS3", "Next.js"],
     },
     {
       category: "Backend & APIs",
-      items: ["Spring Boot", "Flask", "Node.js", "Express.js", "RESTful APIs", "FastAPI"]
+      items: [
+        "Spring Boot",
+        "Flask",
+        "Node.js",
+        "Express.js",
+        "RESTful APIs",
+        "FastAPI",
+      ],
     },
     {
       category: "Data Science & ML",
-      items: ["NumPy", "Pandas", "Matplotlib", "SciPy", "scikit-learn", "TensorFlow", "Keras", "NLTK", "Ultralytics YOLO", "Recharts", "ReportLab"]
+      items: [
+        "NumPy",
+        "Pandas",
+        "Matplotlib",
+        "SciPy",
+        "scikit-learn",
+        "TensorFlow",
+        "Keras",
+        "NLTK",
+        "Ultralytics YOLO",
+        "Recharts",
+        "ReportLab",
+      ],
     },
     {
       category: "Databases",
-      items: ["PostgreSQL", "SQLite", "IndexedDB"]
+      items: ["PostgreSQL", "SQLite", "IndexedDB"],
     },
     {
       category: "Tools",
-      items: ["Git", "GitHub", "Docker", "VS Code", "Jupyter Notebook", "IntelliJ", "Redis", "Claude API", "OpenAI API"]
-    }
+      items: [
+        "Git",
+        "GitHub",
+        "Docker",
+        "VS Code",
+        "Jupyter Notebook",
+        "IntelliJ",
+        "Redis",
+        "Claude API",
+        "OpenAI API",
+      ],
+    },
   ];
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   };
 
   return (
     <div className="bg-[#0A0A0A] text-white font-['Inter'] overflow-x-hidden">
       {/* Fixed Navbar */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 py-4 sm:py-6 transition-all duration-400 ${
-        isNavbarSolid ? 'navbar-solid' : 'bg-transparent'
-      }`}>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 py-4 sm:py-6 transition-all duration-400 ${
+          isNavbarSolid ? "navbar-solid" : "bg-transparent"
+        }`}
+      >
         <div className="w-full flex justify-between items-center">
-          <button 
+          <button
             onClick={scrollToTop}
             className="text-xl font-semibold text-white hover:text-[#015FFC] transition-colors duration-300 cursor-pointer"
             aria-label="Return to home page"
@@ -315,10 +394,30 @@ function App() {
             AJ
           </button>
           <div className="hidden md:flex space-x-8">
-            <a href="#experience" className="hover:text-[#015FFC] transition-colors duration-300">Experience</a>
-            <a href="#toolbox" className="hover:text-[#015FFC] transition-colors duration-300">Toolbox</a>
-            <a href="#about" className="hover:text-[#015FFC] transition-colors duration-300">About</a>
-            <a href="#portfolio" className="hover:text-[#015FFC] transition-colors duration-300">Portfolio</a>
+            <a
+              href="#experience"
+              className="hover:text-[#015FFC] transition-colors duration-300"
+            >
+              Experience
+            </a>
+            <a
+              href="#toolbox"
+              className="hover:text-[#015FFC] transition-colors duration-300"
+            >
+              Toolbox
+            </a>
+            <a
+              href="#about"
+              className="hover:text-[#015FFC] transition-colors duration-300"
+            >
+              About
+            </a>
+            <a
+              href="#portfolio"
+              className="hover:text-[#015FFC] transition-colors duration-300"
+            >
+              Portfolio
+            </a>
           </div>
         </div>
       </nav>
@@ -328,7 +427,7 @@ function App() {
         {/* Green Particles Background with Continuous Animation */}
         <div className="absolute inset-0 w-full h-full">
           <Particles
-            particleColors={['#00FF7F', '#32CD32', '#00FA9A']}
+            particleColors={["#00FF7F", "#32CD32", "#00FA9A"]}
             particleCount={300}
             particleSpread={18}
             speed={0.03}
@@ -342,33 +441,36 @@ function App() {
             smoothness={0.08}
           />
         </div>
-        
+
         {/* Hero Content - Mobile Optimized */}
         <div className="text-center z-10 w-full max-w-6xl mx-auto">
           <h1 className="hero-headline text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 sm:mb-8 fade-in-up leading-tight">
-             Hi! I'm Ahan.
+            Hi! I'm Ahan.
           </h1>
-          <div className="hero-bio text-base sm:text-lg md:text-xl lg:text-2xl font-light tracking-wide mb-12 sm:mb-16 fade-in-up max-w-5xl mx-auto min-h-[2.5rem] sm:min-h-[3rem] flex items-center justify-center text-center px-4" style={{letterSpacing: '0.2px'}}>
+          <div
+            className="hero-bio text-base sm:text-lg md:text-xl lg:text-2xl font-light tracking-wide mb-12 sm:mb-16 fade-in-up max-w-5xl mx-auto min-h-[2.5rem] sm:min-h-[3rem] flex items-center justify-center text-center px-4"
+            style={{ letterSpacing: "0.2px" }}
+          >
             <div className="font-mono w-full">
               <div className="text-center leading-relaxed">
                 <span className="whitespace-nowrap">I'm&nbsp;</span>
                 <span className="text-[#00FF7F] break-words">
                   {currentText}
-                  <span 
-                    className={`inline-block w-2 sm:w-3 bg-[#00FF7F] ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-150`}
-                    style={{ 
-                      height: '1.2em',
-                      transform: 'translateY(0.2em)'
+                  <span
+                    className={`inline-block w-2 sm:w-3 bg-[#00FF7F] ml-1 ${showCursor ? "opacity-100" : "opacity-0"} transition-opacity duration-150`}
+                    style={{
+                      height: "1.2em",
+                      transform: "translateY(0.2em)",
                     }}
                   ></span>
                 </span>
               </div>
             </div>
           </div>
-          
+
           {/* Navigable scroll arrow - points to experience section */}
-          <a 
-            href="#experience" 
+          <a
+            href="#experience"
             className="scroll-arrow inline-block mt-4 sm:mt-8 text-white/60 hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer"
             aria-label="Scroll to Experience section"
           >
@@ -378,12 +480,15 @@ function App() {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="min-h-screen flex items-center justify-center py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-[#111111] grain-texture scroll-mt-20">
+      <section
+        id="experience"
+        className="min-h-screen flex items-center justify-center py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-[#111111] grain-texture scroll-mt-20"
+      >
         <div className="max-w-7xl mx-auto w-full">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-16 sm:mb-20 text-center fade-in-up">
             Experience
           </h2>
-          
+
           <div className="space-y-8 sm:space-y-12 lg:space-y-16">
             {/* Darby AI Experience */}
             <div className="fade-in-up">
@@ -394,7 +499,7 @@ function App() {
                       Darby
                     </h3>
                     <p className="text-lg sm:text-xl text-gray-300 font-medium">
-                       AI Engineer Co-op
+                      AI Engineer Co-op
                     </p>
                   </div>
                   <div className="text-gray-400 text-sm sm:text-base lg:text-lg">
@@ -402,14 +507,37 @@ function App() {
                   </div>
                 </div>
                 <div className="space-y-3 sm:space-y-4 text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed">
-                  <p>• Engineered production microservices using Spring Boot, Node.js, SQL, and containerized deployments to support Medicare coverage lookup, internal analytics, and customer-facing workflows</p>
-                  <p>• Built secure authentication layers using JWT, refresh-token rotation, and header-validated API access across distributed services</p>
-                  <p>• Developed AI-assisted document automation features using LLM APIs, OCR, and structured extraction to accelerate high-volume healthcare PDF processing</p>
-                  <p>• Designed backend components behind a real-time admin analytics platform used across 15+ organizations to surface usage insights, customer health scoring, and expansion signals</p>
-                  <p>• Contributed to architecture reviews, schema design, and performance tuning efforts to improve system reliability, latency, and long-term scalability</p>
+                  <p>
+                    • Engineered production microservices using Spring Boot,
+                    Node.js, SQL, and containerized deployments to support
+                    Medicare coverage lookup, internal analytics, and
+                    customer-facing workflows
+                  </p>
+                  <p>
+                    • Built secure authentication layers using JWT,
+                    refresh-token rotation, and header-validated API access
+                    across distributed services
+                  </p>
+                  <p>
+                    • Developed AI-assisted document automation features using
+                    LLM APIs, OCR, and structured extraction to accelerate
+                    high-volume healthcare PDF processing
+                  </p>
+                  <p>
+                    • Designed backend components behind a real-time admin
+                    analytics platform used across 15+ organizations to surface
+                    usage insights, customer health scoring, and expansion
+                    signals
+                  </p>
+                  <p>
+                    • Contributed to architecture reviews, schema design, and
+                    performance tuning efforts to improve system reliability,
+                    latency, and long-term scalability
+                  </p>
                 </div>
                 <div className="mt-4 sm:mt-6 text-gray-400 text-xs sm:text-sm italic">
-                  Additional detailed technical material available upon request due to NDA constraints.
+                  Additional detailed technical material available upon request
+                  due to NDA constraints.
                 </div>
               </div>
             </div>
@@ -420,7 +548,7 @@ function App() {
                 <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4 sm:mb-6">
                   <div className="mb-4 lg:mb-0">
                     <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#00FF7F] mb-2">
-                     Oasis NEU
+                      Oasis NEU
                     </h3>
                     <p className="text-lg sm:text-xl text-gray-300 font-medium">
                       Software Developer
@@ -431,9 +559,22 @@ function App() {
                   </div>
                 </div>
                 <div className="space-y-3 sm:space-y-4 text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed">
-                  <p>• Co-developed Husky Laundry, a real-time web platform delivering live machine availability to students across 20+ dorms, improving transparency and reducing wait times during peak hours</p>
-                  <p>• Built Python-based data pipelines that ingested and aggregated machine telemetry, enabling usage trend analysis and data-informed resource planning for residence halls</p>
-                  <p>• Generated insights from historical usage patterns that supported early predictive maintenance discussions and operational improvements</p>
+                  <p>
+                    • Co-developed Husky Laundry, a real-time web platform
+                    delivering live machine availability to students across 20+
+                    dorms, improving transparency and reducing wait times during
+                    peak hours
+                  </p>
+                  <p>
+                    • Built Python-based data pipelines that ingested and
+                    aggregated machine telemetry, enabling usage trend analysis
+                    and data-informed resource planning for residence halls
+                  </p>
+                  <p>
+                    • Generated insights from historical usage patterns that
+                    supported early predictive maintenance discussions and
+                    operational improvements
+                  </p>
                 </div>
               </div>
             </div>
@@ -444,10 +585,10 @@ function App() {
                 <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4 sm:mb-6">
                   <div className="mb-4 lg:mb-0">
                     <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#00FF7F] mb-2">
-                     Net Solutions
+                      Net Solutions
                     </h3>
                     <p className="text-lg sm:text-xl text-gray-300 font-medium">
-                     Software Engineer Intern
+                      Software Engineer Intern
                     </p>
                   </div>
                   <div className="text-gray-400 text-sm sm:text-base lg:text-lg">
@@ -455,9 +596,18 @@ function App() {
                   </div>
                 </div>
                 <div className="space-y-3 sm:space-y-4 text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed">
-                  <p>• Built a small Flask web app that let users search artists and browse albums and tracks using the Spotify API</p>
-                  <p>• Implemented Python backend routes and Spotipy calls for artist lookup, album listing, and track metadata retrieval</p>
-                  <p>• Structured API results into clean dictionaries for template rendering and a straightforward browsing experience</p>
+                  <p>
+                    • Built a small Flask web app that let users search artists
+                    and browse albums and tracks using the Spotify API
+                  </p>
+                  <p>
+                    • Implemented Python backend routes and Spotipy calls for
+                    artist lookup, album listing, and track metadata retrieval
+                  </p>
+                  <p>
+                    • Structured API results into clean dictionaries for
+                    template rendering and a straightforward browsing experience
+                  </p>
                 </div>
               </div>
             </div>
@@ -466,12 +616,15 @@ function App() {
       </section>
 
       {/* Tech Stack Section - Mobile Optimized */}
-      <section id="toolbox" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 bg-[#0A0A0A] scroll-mt-20">
+      <section
+        id="toolbox"
+        className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 bg-[#0A0A0A] scroll-mt-20"
+      >
         <div className="max-w-7xl mx-auto w-full">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-16 sm:mb-20 text-center fade-in-up">
             My Toolbox
           </h2>
-          
+
           {/* Desktop Table View */}
           <div className="hidden lg:block fade-in-up">
             <div className="bg-[#1a1a1a] rounded-xl overflow-hidden border border-gray-800 shadow-2xl">
@@ -479,7 +632,10 @@ function App() {
                 <thead>
                   <tr className="bg-[#2a2a2a] border-b border-gray-700">
                     {toolboxData.map((category, index) => (
-                      <th key={index} className="px-4 lg:px-6 xl:px-8 py-5 lg:py-7 text-left font-semibold text-[#00FF7F] text-lg lg:text-xl">
+                      <th
+                        key={index}
+                        className="px-4 lg:px-6 xl:px-8 py-5 lg:py-7 text-left font-semibold text-[#00FF7F] text-lg lg:text-xl"
+                      >
                         {category.category}
                       </th>
                     ))}
@@ -488,16 +644,20 @@ function App() {
                 <tbody>
                   <tr>
                     {toolboxData.map((category, categoryIndex) => (
-                      <td key={categoryIndex} className="px-4 lg:px-6 xl:px-8 py-6 lg:py-8 align-top border-r border-gray-800 last:border-r-0 pointer-events-auto">
+                      <td
+                        key={categoryIndex}
+                        className="px-4 lg:px-6 xl:px-8 py-6 lg:py-8 align-top border-r border-gray-800 last:border-r-0 pointer-events-auto"
+                      >
                         <div className="space-y-3 lg:space-y-4">
                           {category.items.map((item, itemIndex) => (
-                            <div 
+                            <div
                               key={itemIndex}
                               className="toolbox-item bg-[#0A0A0A] px-3 lg:px-4 py-2 lg:py-3 rounded-lg text-sm lg:text-base font-medium text-white cursor-default"
                               style={{
-                                willChange: 'transform, background-color, box-shadow',
-                                transition: 'all 200ms ease-in-out',
-                                transformOrigin: 'center'
+                                willChange:
+                                  "transform, background-color, box-shadow",
+                                transition: "all 200ms ease-in-out",
+                                transformOrigin: "center",
                               }}
                             >
                               {item}
@@ -515,19 +675,22 @@ function App() {
           {/* Mobile/Tablet Card View */}
           <div className="lg:hidden space-y-6 sm:space-y-8 fade-in-up">
             {toolboxData.map((category, index) => (
-              <div key={index} className="bg-[#1a1a1a] rounded-xl p-4 sm:p-6 lg:p-8 border border-gray-800 shadow-xl">
+              <div
+                key={index}
+                className="bg-[#1a1a1a] rounded-xl p-4 sm:p-6 lg:p-8 border border-gray-800 shadow-xl"
+              >
                 <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-[#00FF7F] mb-3 sm:mb-4 lg:mb-6">
                   {category.category}
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3 lg:gap-4">
                   {category.items.map((item, itemIndex) => (
-                    <div 
+                    <div
                       key={itemIndex}
                       className="toolbox-item bg-[#0A0A0A] px-2 sm:px-3 lg:px-4 py-2 sm:py-3 rounded-lg text-xs sm:text-sm lg:text-base font-medium text-white cursor-default text-center"
                       style={{
-                        willChange: 'transform, background-color, box-shadow',
-                        transition: 'all 200ms ease-in-out',
-                        transformOrigin: 'center'
+                        willChange: "transform, background-color, box-shadow",
+                        transition: "all 200ms ease-in-out",
+                        transformOrigin: "center",
                       }}
                     >
                       {item}
@@ -541,7 +704,10 @@ function App() {
       </section>
 
       {/* Biography Section - Image Left, Text Right on Desktop */}
-      <section id="about" className="min-h-screen flex items-center justify-center py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-[#111111] grain-texture scroll-mt-20">
+      <section
+        id="about"
+        className="min-h-screen flex items-center justify-center py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-[#111111] grain-texture scroll-mt-20"
+      >
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-stretch">
             {/* Image - First on mobile, first on desktop */}
@@ -556,21 +722,28 @@ function App() {
             </div>
             {/* Text - Second on mobile, second on desktop */}
             <div className="fade-in-up order-2 h-full flex flex-col justify-center">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 sm:mb-8 lg:mb-10">About Me</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 sm:mb-8 lg:mb-10">
+                About Me
+              </h2>
               <div className="space-y-4 sm:space-y-6 lg:space-y-8 text-base sm:text-lg lg:text-xl font-light leading-relaxed">
                 <p>
-                  CS & AI student at Northeastern University, driven to build software that makes a real difference. 
-                  I thrive on tackling complex challenges and bringing creative ideas to life.
+                  CS & AI student at Northeastern University, driven to build
+                  software that makes a real difference. I thrive on tackling
+                  complex challenges and bringing creative ideas to life.
                 </p>
                 <p>
-                As a software engineer, I architect scalable APIs, build real-time data pipelines, and leverage machine-learning insights to drive smarter systems. 
-                Off the clock, you'll find me jamming with friends, diving into my favorite games, or exploring new backend tools.
+                  As a software engineer, I architect scalable APIs, build
+                  real-time data pipelines, and leverage machine-learning
+                  insights to drive smarter systems. Off the clock, you'll find
+                  me jamming with friends, diving into my favorite games, or
+                  exploring new backend tools.
                 </p>
                 <p>
-                  I'm passionate about turning complex problems into elegant solutions and sharing my work with the developer community.
+                  I'm passionate about turning complex problems into elegant
+                  solutions and sharing my work with the developer community.
                 </p>
               </div>
-              
+
               {/* Social Links */}
               <div className="flex flex-col sm:flex-row sm:items-start sm:space-x-6 lg:space-x-8 mt-8 sm:mt-12 lg:mt-16">
                 <a
@@ -587,8 +760,10 @@ function App() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Linkedin className="w-5 h-5 flex-shrink-0"
-                    style={{ transform: 'translateY(0px)' }}/>
+                  <Linkedin
+                    className="w-5 h-5 flex-shrink-0"
+                    style={{ transform: "translateY(0px)" }}
+                  />
                   <span className="linkedin-underline">LinkedIn</span>
                 </a>
 
@@ -618,7 +793,10 @@ function App() {
       </section>
 
       {/* Portfolio Section - Mobile Optimized */}
-      <section id="portfolio" className="min-h-screen flex items-center justify-center py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-[#0A0A0A] scroll-mt-20">
+      <section
+        id="portfolio"
+        className="min-h-screen flex items-center justify-center py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-[#0A0A0A] scroll-mt-20"
+      >
         <div className="max-w-7xl mx-auto w-full">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-12 sm:mb-16 lg:mb-20 text-center fade-in-up">
             Projects
@@ -626,46 +804,56 @@ function App() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
             {portfolioProjects.map((project, index) => (
               <div key={index} className="fade-in-up card-hover">
-                <button 
+                <button
                   onClick={() => openModal(index)}
                   className="block bg-[#1a1a1a] rounded-xl overflow-hidden group h-full flex flex-col cursor-pointer shadow-xl w-full text-left border border-[#1a1a1a] transition-all duration-400 focus:outline-none focus:ring-0"
                 >
                   <div className="overflow-hidden aspect-video">
-                      <img 
-                        src={project.image} 
-                        alt={project.title}
-                        className={`w-full h-full transition-all duration-400 grayscale group-hover:grayscale-0 ${
-                          project.title === "Husky Laundry" 
-                            ? "object-cover object-top scale-100" 
-                            : project.title === "Three Trios"
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className={`w-full h-full transition-all duration-400 grayscale group-hover:grayscale-0 ${
+                        project.title === "Husky Laundry"
+                          ? "object-cover object-top scale-100"
+                          : project.title === "Three Trios"
                             ? "object-cover scale-100"
                             : project.title === "InsightHub"
-                            ? "object-cover scale-100"
-                            : "object-fill"
-                        }`}
-                        style={
-                          project.title === "Three Trios"
-                            ? { objectPosition: '2% 2%' }
-                            : project.title === "InsightHub"
-                           ? { objectFit: 'cover', objectPosition: 'center 5%' }
-                           : project.title === "OpsPilot"
-                           ? { objectFit: 'cover', objectPosition: 'center 5%' }
-                            : {}
-                        }
-                      />
+                              ? "object-cover scale-100"
+                              : "object-fill"
+                      }`}
+                      style={
+                        project.title === "Three Trios"
+                          ? { objectPosition: "2% 2%" }
+                          : project.title === "InsightHub"
+                            ? {
+                                objectFit: "cover",
+                                objectPosition: "center 5%",
+                              }
+                            : project.title === "OpsPilot"
+                              ? {
+                                  objectFit: "cover",
+                                  objectPosition: "center 5%",
+                                }
+                              : {}
+                      }
+                    />
                   </div>
                   <div className="p-4 sm:p-6 lg:p-8 flex-1 flex flex-col">
-                    <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3">{project.title}</h3>
-                    <p className="text-gray-400 mb-4 sm:mb-6 font-light flex-1 text-sm sm:text-base lg:text-lg">{project.description}</p>
+                    <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-400 mb-4 sm:mb-6 font-light flex-1 text-sm sm:text-base lg:text-lg">
+                      {project.description}
+                    </p>
                   </div>
                 </button>
               </div>
             ))}
           </div>
-          
+
           {/* View All Projects Button */}
           <div className="text-center mt-8 sm:mt-12 lg:mt-16 fade-in-up">
-            <a 
+            <a
               href="https://github.com/ahan-jain"
               target="_blank"
               rel="noopener noreferrer"
@@ -679,23 +867,23 @@ function App() {
 
       {/* Project Modal */}
       {selectedProject !== null && (
-        <div 
+        <div
           className="fixed inset-0 z-[100] flex items-center justify-center p-4"
           onClick={closeModal}
         >
           {/* Backdrop with blur - fade animation */}
-          <div 
+          <div
             className="absolute inset-0 bg-black/60 backdrop-blur-[8px] transition-opacity duration-300 ease-out"
             style={{
-              opacity: isModalAnimating ? 1 : 0
+              opacity: isModalAnimating ? 1 : 0,
             }}
           />
-          
+
           {/* Modal Content - fade animation only */}
-          <div 
+          <div
             className="relative bg-[#1a1a1a] rounded-xl max-w-4xl w-full shadow-2xl border border-[#1a1a1a] transition-opacity duration-300 ease-out"
             style={{
-              opacity: isModalAnimating ? 1 : 0
+              opacity: isModalAnimating ? 1 : 0,
             }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -716,19 +904,24 @@ function App() {
                 className="w-full h-full transition-all duration-300"
                 style={
                   portfolioProjects[selectedProject].title === "Husky Laundry"
-                    // keep your existing Husky Laundry framing
-                    ? { objectFit: 'cover', objectPosition: 'center top' }
+                    ? // keep your existing Husky Laundry framing
+                      { objectFit: "cover", objectPosition: "center top" }
                     : portfolioProjects[selectedProject].title === "Three Trios"
-                    // now match the same crop you used on the tile
-                    ? { objectFit: 'cover', objectPosition: '2% 2%' }
-                    : portfolioProjects[selectedProject].title === "InsightHub"
-                    // center the complete detection interface view
-                   ? { objectFit: 'cover', objectPosition: 'center 20%' }
-                   : portfolioProjects[selectedProject].title === "OpsPilot"
-                   // shift slightly down to better frame the content
-                   ? { objectFit: 'cover', objectPosition: 'center 5%' }
-                    // all others just center‐cover
-                    : { objectFit: 'cover', objectPosition: 'center center' }
+                      ? // now match the same crop you used on the tile
+                        { objectFit: "cover", objectPosition: "2% 2%" }
+                      : portfolioProjects[selectedProject].title ===
+                          "InsightHub"
+                        ? // center the complete detection interface view
+                          { objectFit: "cover", objectPosition: "center 20%" }
+                        : portfolioProjects[selectedProject].title ===
+                            "OpsPilot"
+                          ? // shift slightly down to better frame the content
+                            { objectFit: "cover", objectPosition: "center 5%" }
+                          : // all others just center‐cover
+                            {
+                              objectFit: "cover",
+                              objectPosition: "center center",
+                            }
                 }
               />
             </div>
@@ -738,14 +931,14 @@ function App() {
               <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-3 sm:mb-4 text-white">
                 {portfolioProjects[selectedProject].title}
               </h3>
-              
+
               <p className="text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8">
                 {portfolioProjects[selectedProject].fullDescription}
               </p>
 
               {/* Open Repository Button */}
               <div className="flex justify-center">
-                <a 
+                <a
                   href={portfolioProjects[selectedProject].githubLink}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -767,17 +960,17 @@ function App() {
             <p className="text-gray-400 font-light mb-4 sm:mb-6 md:mb-0 text-sm sm:text-base lg:text-lg">
               © Ahan Jain
             </p>
-            
+
             {/* Footer Social Links */}
             <div className="flex space-x-6 sm:space-x-8">
-              <a 
+              <a
                 href="mailto:ahan@ahanjain.com,jain.aha@northeastern.edu"
                 className="text-gray-400 hover:text-[#00FF7F] transition-colors duration-300"
                 aria-label="Email"
               >
                 <Mail className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" />
               </a>
-              <a 
+              <a
                 href="https://github.com/ahan-jain"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -786,7 +979,7 @@ function App() {
               >
                 <Github className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" />
               </a>
-              <a 
+              <a
                 href="https://linkedin.com/in/ahanjain"
                 target="_blank"
                 rel="noopener noreferrer"
