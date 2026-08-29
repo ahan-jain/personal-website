@@ -778,7 +778,7 @@ function App() {
                 </a>
 
                 <a
-                  href="/Ahan_Jain_Resume.pdf"
+                  href="/Jain_Ahan_Resume.pdf"
                   className="flex items-center space-x-2 sm:space-x-3 text-gray-400 hover:text-[#00FF7F] transition-colors duration-300"
                   target="_blank"
                   rel="noopener noreferrer"
