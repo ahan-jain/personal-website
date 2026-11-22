@@ -4,16 +4,16 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ahan Jain - Computer Science Student & AI Enthusiast</title>
+    <title>Ahan Jain</title>
     
     <!-- Meta tags for social sharing -->
     <meta name="description" content="Computer Science student @ Northeastern | AI & ML enthusiast | Building impactful software. Explore my portfolio and get in touch." />
-    <meta property="og:title" content="Ahan Jain - Computer Science Student & AI Enthusiast" />
+    <meta property="og:title" content="Ahan Jain" />
     <meta property="og:description" content="Computer Science student @ Northeastern | AI & ML enthusiast | Building impactful software" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://ahanjain.dev" />
+    <meta property="og:url" content="https://ahanjain.com" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Ahan Jain - Computer Science Student & AI Enthusiast" />
+    <meta name="twitter:title" content="Ahan Jain" />
     <meta name="twitter:description" content="Computer Science student @ Northeastern | AI & ML enthusiast | Building impactful software" />
     
     <!-- Inter font from Google Fonts -->
@@ -25,6 +25,12 @@
       html {
         scroll-behavior: smooth;
         font-family: 'Inter', sans-serif;
+      }
+      
+      body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
       }
       
       .grain-texture {
@@ -170,14 +176,35 @@
         }
       }
       
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
+      /* Mobile-first responsive design */
+      @media (max-width: 640px) {
         .hero-text-container {
-          padding: 2rem 1.5rem;
+          padding: 1rem;
         }
         
         .hero-headline {
-          font-size: 3.5rem;
+          font-size: 2.5rem;
+          line-height: 1.1;
+          margin-bottom: 1.5rem;
+        }
+        
+        .hero-bio {
+          font-size: 1rem;
+          line-height: 1.5;
+          padding: 0 0.5rem;
+        }
+        
+        /* Prevent text overflow on mobile */
+        .font-mono {
+          word-break: break-word;
+          -webkit-hyphens: auto;
+                  hyphens: auto;
+        }
+      }
+      
+      @media (min-width: 641px) and (max-width: 768px) {
+        .hero-headline {
+          font-size: 3rem;
           line-height: 1.1;
         }
         
@@ -186,18 +213,43 @@
         }
       }
       
-      @media (max-width: 480px) {
+      @media (min-width: 769px) and (max-width: 1024px) {
         .hero-headline {
-          font-size: 2.75rem;
+          font-size: 4rem;
         }
         
         .hero-bio {
-          font-size: 1rem;
+          font-size: 1.25rem;
+        }
+      }
+      
+      /* Ensure proper text wrapping and prevent overflow */
+      * {
+        box-sizing: border-box;
+      }
+      
+      .text-wrap {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        -webkit-hyphens: auto;
+                hyphens: auto;
+      }
+      
+      /* Fix for mobile viewport issues */
+      @media (max-width: 640px) {
+        html, body {
+          overflow-x: hidden;
+          width: 100%;
+        }
+        
+        .min-h-screen {
+          min-height: 100vh;
+          min-height: -webkit-fill-available;
         }
       }
     </style>
-    <script type="module" crossorigin src="/assets/index-CTsWwcIQ.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-C9aMx8Lc.css">
+    <script type="module" crossorigin src="/assets/index-B41ynRJo.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Cr6ohARz.css">
   </head>
   <body>
     <div id="root"></div>

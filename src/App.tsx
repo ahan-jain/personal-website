@@ -256,11 +256,22 @@ function App() {
 
   const portfolioProjects = [
     {
-      title: "OpsPilot",
-      description: "Autonomous Agent with Model Context Protocol Integration",
+      title: "FourNight",
+      description: "Competitive games platform with Glicko-2 ratings",
       fullDescription:
-        "Autonomous operations agent with Model Context Protocol integration that handles multi-step operational workflows through natural language, featuring explicit state machine architecture (Plan→Execute→Evaluate), approval workflows for high-risk operations, and comprehensive audit logging for debugging AI decision-making in production systems.",
+        "A competitive games platform built by a team of 4 in TypeScript, Node.js, and Socket.IO. I built the Glicko-2 rating engine, which ranks both human players and AI opponents, plus a Redis-cached leaderboard and a real-time matchmaker that widens its rating range the longer a player waits. I also built a daily puzzle system with streaks and a replay analyzer that grades each move against the best possible play across 4 games, with 90% test coverage.",
+      image: "/liveviewer.png",
+      imagePosition: "center 5%",
+      githubLink: "https://github.com/neu-cs4530/FourNight",
+      liveLink: null,
+    },
+    {
+      title: "OpsPilot",
+      description: "Autonomous incident-investigation agent",
+      fullDescription:
+        "An AI agent built on the Claude API and FastAPI that investigates incidents on its own. It searches logs, queries metrics, and writes reports, working in a plan, act, and evaluate loop. A state machine keeps it safe: every run is capped at 10 steps, and it can't create tickets without human approval. Its 7 tools are served from a custom MCP server, and every step is logged to a Next.js dashboard where you can review past runs.",
       image: "/opspilot.png",
+      imagePosition: "center 5%",
       githubLink: "https://github.com/ahan-jain/opspilot",
       liveLink: null,
     },
@@ -270,6 +281,7 @@ function App() {
       fullDescription:
         "Multi-model computer vision system using 5 specialized YOLO detectors to automate safety compliance monitoring in construction and industrial environments, achieving 85-90% accuracy in detecting PPE violations, infrastructure damage, and emergency hazards with offline-first capabilities and automated reporting.",
       image: "/insighthub.png",
+      imagePosition: "center 5%",
       githubLink: "https://github.com/ahan-jain/insighthub",
       liveLink: null,
     },
@@ -279,6 +291,7 @@ function App() {
       fullDescription:
         "Dynamic two-player Java MVC card duel where each strategic placement triggers cascading flips across the grid, pitting Team Red vs. Team Blue in a battle for territorial domination.",
       image: "/midgame_final.png",
+      imagePosition: "2% 2%",
       githubLink:
         "https://github.com/ahan-jain/NEU-Projects/tree/main/Java%20Projects/Three%20Trios",
       liveLink: null,
@@ -289,6 +302,7 @@ function App() {
       fullDescription:
         "Real-time web platform delivering live machine availability to students across 20+ dorms, improving transparency and reducing wait times during peak hours. Built with Python data pipelines for machine telemetry aggregation and usage trend analysis.",
       image: "/laundry.png",
+      imagePosition: "center top",
       githubLink: "https://github.com/ahan-jain/husky-laundry",
       liveLink: null,
     },
@@ -298,6 +312,7 @@ function App() {
       fullDescription:
         'LSTM model trained on a "fake-news" dataset that can predict the next word in a sequence or generate paragraphs from a seed phrase, showcasing core neural sequence-learning capabilities.',
       image: "/neural_network_prediction.jpg",
+      imagePosition: "center",
       githubLink:
         "https://github.com/ahan-jain/Neural-Text-Generation/tree/main",
       liveLink: null,
@@ -307,65 +322,46 @@ function App() {
   const toolboxData = [
     {
       category: "Languages",
-      items: [
-        "Python",
-        "Java",
-        "JavaScript",
-        "TypeScript",
-        "C",
-        "SQL",
-        "R",
-        "Elixir",
-        "Racket",
-      ],
+      items: ["TypeScript", "JavaScript", "Python", "Java", "SQL", "C"],
     },
     {
       category: "Frontend",
-      items: ["React", "Angular", "HTML5", "CSS3", "Next.js"],
+      items: ["React", "Next.js", "Angular", "Playwright"],
     },
     {
-      category: "Backend & APIs",
+      category: "Backend",
       items: [
-        "Spring Boot",
-        "Flask",
         "Node.js",
-        "Express.js",
-        "RESTful APIs",
+        "Express",
+        "Spring Boot",
         "FastAPI",
-      ],
-    },
-    {
-      category: "Data Science & ML",
-      items: [
-        "NumPy",
-        "Pandas",
-        "Matplotlib",
-        "SciPy",
-        "scikit-learn",
-        "TensorFlow",
-        "Keras",
-        "NLTK",
-        "Ultralytics YOLO",
-        "Recharts",
-        "ReportLab",
+        "Socket.IO",
+        "BullMQ",
       ],
     },
     {
       category: "Databases",
-      items: ["PostgreSQL", "SQLite", "IndexedDB"],
+      items: ["SQL Server", "PostgreSQL", "SQLite", "MongoDB", "Redis"],
     },
     {
-      category: "Tools",
+      category: "Cloud & DevOps",
       items: [
-        "Git",
-        "GitHub",
+        "Azure Container Apps",
+        "Azure Blob Storage",
+        "Azure DevOps",
         "Docker",
-        "VS Code",
-        "Jupyter Notebook",
-        "IntelliJ",
-        "Redis",
-        "Claude API",
+        "Git",
+      ],
+    },
+    {
+      category: "AI/ML",
+      items: [
+        "Anthropic API",
         "OpenAI API",
+        "MCP",
+        "RAG",
+        "FAISS",
+        "Claude Code",
       ],
     },
   ];
@@ -490,7 +486,51 @@ function App() {
           </h2>
 
           <div className="space-y-8 sm:space-y-12 lg:space-y-16">
-            {/* Darby AI Experience */}
+            {/* General Atlantic Experience */}
+            <div className="fade-in-up">
+              <div className="bg-[#1a1a1a] rounded-xl p-6 sm:p-8 lg:p-10 border border-gray-800 shadow-xl hover:shadow-2xl transition-all duration-400">
+                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4 sm:mb-6">
+                  <div className="mb-4 lg:mb-0">
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#00FF7F] mb-2">
+                      General Atlantic
+                    </h3>
+                    <p className="text-lg sm:text-xl text-gray-300 font-medium">
+                      Application Development Co-op
+                    </p>
+                  </div>
+                  <div className="text-gray-400 text-sm sm:text-base lg:text-lg">
+                    July 2026 - Present
+                  </div>
+                </div>
+                <ul className="list-disc pl-5 sm:pl-6 space-y-3 sm:space-y-4 text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed marker:text-[#00FF7F]">
+                  <li>
+                    Eliminated $230K in annual software spend by building a
+                    financial period-close application in React, TypeScript,
+                    Express, and SQL Server to replace a third-party platform,
+                    with period locks, approval workflows, and Playwright end-
+                    to-end tests.
+                  </li>
+                  <li>
+                    Designed and built a capital markets contract and revenue
+                    platform spanning deals, invoicing, revenue recognition, and
+                    cash collection, replacing a spreadsheet-based billing
+                    process with maker-checker approvals.
+                  </li>
+                  <li>
+                    Architected and launched a firm-wide request management
+                    platform with role-based access control and a state machine
+                    to automate handovers between teams.
+                  </li>
+                  <li>
+                    Validated production readiness of a new investor document
+                    portal with a custom load-testing framework, running 7.6M+
+                    requests at up to 300+ req/s and 3,000+ concurrent users.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Darby Experience */}
             <div className="fade-in-up">
               <div className="bg-[#1a1a1a] rounded-xl p-6 sm:p-8 lg:p-10 border border-gray-800 shadow-xl hover:shadow-2xl transition-all duration-400">
                 <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4 sm:mb-6">
@@ -506,108 +546,27 @@ function App() {
                     July 2025 - December 2025
                   </div>
                 </div>
-                <div className="space-y-3 sm:space-y-4 text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed">
-                  <p>
-                    • Engineered production microservices using Spring Boot,
-                    Node.js, SQL, and containerized deployments to support
-                    Medicare coverage lookup, internal analytics, and
-                    customer-facing workflows
-                  </p>
-                  <p>
-                    • Built secure authentication layers using JWT,
-                    refresh-token rotation, and header-validated API access
-                    across distributed services
-                  </p>
-                  <p>
-                    • Developed AI-assisted document automation features using
-                    LLM APIs, OCR, and structured extraction to accelerate
-                    high-volume healthcare PDF processing
-                  </p>
-                  <p>
-                    • Designed backend components behind a real-time admin
-                    analytics platform used across 15+ organizations to surface
-                    usage insights, customer health scoring, and expansion
-                    signals
-                  </p>
-                  <p>
-                    • Contributed to architecture reviews, schema design, and
-                    performance tuning efforts to improve system reliability,
-                    latency, and long-term scalability
-                  </p>
-                </div>
+                <ul className="list-disc pl-5 sm:pl-6 space-y-3 sm:space-y-4 text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed marker:text-[#00FF7F]">
+                  <li>
+                    Reduced Medicare coverage research from 30–60 minutes to
+                    under 30 seconds by building Spring Boot and Node.js
+                    microservices that search 6,850+ policies using Claude OCR
+                    and FAISS semantic search.
+                  </li>
+                  <li>
+                    Designed a 7-step coverage decision engine following the CMS
+                    policy hierarchy, resolving 95%+ of cases with deterministic
+                    rules and routing low-confidence results to human review.
+                  </li>
+                  <li>
+                    Delivered a real-time admin analytics platform in Angular,
+                    Spring Boot, and PostgreSQL that scores customer health and
+                    flags churn risk across 15+ organizations.
+                  </li>
+                </ul>
                 <div className="mt-4 sm:mt-6 text-gray-400 text-xs sm:text-sm italic">
                   Additional detailed technical material available upon request
                   due to NDA constraints.
-                </div>
-              </div>
-            </div>
-
-            {/* Oasis NEU Experience */}
-            <div className="fade-in-up">
-              <div className="bg-[#1a1a1a] rounded-xl p-6 sm:p-8 lg:p-10 border border-gray-800 shadow-xl hover:shadow-2xl transition-all duration-400">
-                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4 sm:mb-6">
-                  <div className="mb-4 lg:mb-0">
-                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#00FF7F] mb-2">
-                      Oasis NEU
-                    </h3>
-                    <p className="text-lg sm:text-xl text-gray-300 font-medium">
-                      Software Developer
-                    </p>
-                  </div>
-                  <div className="text-gray-400 text-sm sm:text-base lg:text-lg">
-                    January 2024 - April 2024
-                  </div>
-                </div>
-                <div className="space-y-3 sm:space-y-4 text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed">
-                  <p>
-                    • Co-developed Husky Laundry, a real-time web platform
-                    delivering live machine availability to students across 20+
-                    dorms, improving transparency and reducing wait times during
-                    peak hours
-                  </p>
-                  <p>
-                    • Built Python-based data pipelines that ingested and
-                    aggregated machine telemetry, enabling usage trend analysis
-                    and data-informed resource planning for residence halls
-                  </p>
-                  <p>
-                    • Generated insights from historical usage patterns that
-                    supported early predictive maintenance discussions and
-                    operational improvements
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Net Solutions Experience */}
-            <div className="fade-in-up">
-              <div className="bg-[#1a1a1a] rounded-xl p-6 sm:p-8 lg:p-10 border border-gray-800 shadow-xl hover:shadow-2xl transition-all duration-400">
-                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4 sm:mb-6">
-                  <div className="mb-4 lg:mb-0">
-                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#00FF7F] mb-2">
-                      Net Solutions
-                    </h3>
-                    <p className="text-lg sm:text-xl text-gray-300 font-medium">
-                      Software Engineer Intern
-                    </p>
-                  </div>
-                  <div className="text-gray-400 text-sm sm:text-base lg:text-lg">
-                    May 2021 - June 2021
-                  </div>
-                </div>
-                <div className="space-y-3 sm:space-y-4 text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed">
-                  <p>
-                    • Built a small Flask web app that let users search artists
-                    and browse albums and tracks using the Spotify API
-                  </p>
-                  <p>
-                    • Implemented Python backend routes and Spotipy calls for
-                    artist lookup, album listing, and track metadata retrieval
-                  </p>
-                  <p>
-                    • Structured API results into clean dictionaries for
-                    template rendering and a straightforward browsing experience
-                  </p>
                 </div>
               </div>
             </div>
@@ -809,34 +768,18 @@ function App() {
                   className="block bg-[#1a1a1a] rounded-xl overflow-hidden group h-full flex flex-col cursor-pointer shadow-xl w-full text-left border border-[#1a1a1a] transition-all duration-400 focus:outline-none focus:ring-0"
                 >
                   <div className="overflow-hidden aspect-video">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className={`w-full h-full transition-all duration-400 grayscale group-hover:grayscale-0 ${
-                        project.title === "Husky Laundry"
-                          ? "object-cover object-top scale-100"
-                          : project.title === "Three Trios"
-                            ? "object-cover scale-100"
-                            : project.title === "InsightHub"
-                              ? "object-cover scale-100"
-                              : "object-fill"
-                      }`}
-                      style={
-                        project.title === "Three Trios"
-                          ? { objectPosition: "2% 2%" }
-                          : project.title === "InsightHub"
-                            ? {
-                                objectFit: "cover",
-                                objectPosition: "center 5%",
-                              }
-                            : project.title === "OpsPilot"
-                              ? {
-                                  objectFit: "cover",
-                                  objectPosition: "center 5%",
-                                }
-                              : {}
-                      }
-                    />
+                    {project.image ? (
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-all duration-400 grayscale group-hover:grayscale-0"
+                        style={{ objectPosition: project.imagePosition }}
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-[#0A0A0A] text-[#00FF7F] font-mono text-2xl sm:text-3xl">
+                      {project.title}
+                    </div>
+                    )}
                   </div>
                   <div className="p-4 sm:p-6 lg:p-8 flex-1 flex flex-col">
                     <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3">
@@ -898,32 +841,22 @@ function App() {
 
             {/* Project Image */}
             <div className="aspect-video overflow-hidden rounded-t-xl">
-              <img
-                src={portfolioProjects[selectedProject].image}
-                alt={portfolioProjects[selectedProject].title}
-                className="w-full h-full transition-all duration-300"
-                style={
-                  portfolioProjects[selectedProject].title === "Husky Laundry"
-                    ? // keep your existing Husky Laundry framing
-                      { objectFit: "cover", objectPosition: "center top" }
-                    : portfolioProjects[selectedProject].title === "Three Trios"
-                      ? // now match the same crop you used on the tile
-                        { objectFit: "cover", objectPosition: "2% 2%" }
-                      : portfolioProjects[selectedProject].title ===
-                          "InsightHub"
-                        ? // center the complete detection interface view
-                          { objectFit: "cover", objectPosition: "center 20%" }
-                        : portfolioProjects[selectedProject].title ===
-                            "OpsPilot"
-                          ? // shift slightly down to better frame the content
-                            { objectFit: "cover", objectPosition: "center 5%" }
-                          : // all others just center‐cover
-                            {
-                              objectFit: "cover",
-                              objectPosition: "center center",
-                            }
-                }
-              />
+              {portfolioProjects[selectedProject].image ? (
+                <img
+                  src={portfolioProjects[selectedProject].image}
+                  alt={portfolioProjects[selectedProject].title}
+                  className="w-full h-full transition-all duration-300"
+                  style={{
+                    objectFit: "cover",
+                    objectPosition:
+                      portfolioProjects[selectedProject].imagePosition,
+                  }}
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-[#0A0A0A] text-[#00FF7F] font-mono text-3xl sm:text-4xl">
+                  {portfolioProjects[selectedProject].title}
+                </div>
+              )}
             </div>
 
             {/* Project Content */}

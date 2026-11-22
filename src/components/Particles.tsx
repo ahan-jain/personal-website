@@ -118,8 +118,15 @@ const Particles: React.FC<ParticlesProps> = ({
     const container = containerRef.current;
     if (!container) return;
 
-    const renderer = new Renderer({ depth: false, alpha: true });
+    // Skip the effect entirely when WebGL is unavailable so the page still renders
+    let renderer: Renderer;
+    try {
+      renderer = new Renderer({ depth: false, alpha: true });
+    } catch {
+      return;
+    }
     const gl = renderer.gl;
+    if (!gl) return;
     container.appendChild(gl.canvas);
     gl.clearColor(0, 0, 0, 0);
 
